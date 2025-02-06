@@ -53,3 +53,18 @@ int main() {
 	return 0;
 	
 }
+
+
+void showMenu() {
+	cout << "1. Convert meters to feet\n" ;
+	cout << "2. Convert feet to meters\n" ;
+	cout << "3. Convert kilometers to miles\n" ;
+	cout << "4. Convert miles to kilometers\n" ;
+	cout << "5. Convert Celsius to Fahrenheit\n" ;
+	cout << "6. Convert Fahrenheit to Celsius\n" ;
+	cout << "7. Convert kilograms to pounds\n" ;
+	cout << "8. Convert pounds to kilograms\n" ;
+	cout << "9. Convert liters to gallons\n" ;
+	cout << "10. Convert gallons to liters\n" ;
+	cout << "11. Exit\n" ;
+}
