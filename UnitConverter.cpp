@@ -360,3 +360,29 @@ void kmPerHourToMph() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void mphToKmPerHour() {
+	string input;
+	char choice;
+	do {
+		cout << "Enter speed in mph (or type 'b' to go back): ";
+		cin >> input;
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+		double mph;
+		try {
+			mph = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+		double result = mph * 1.60934;
+		cout << mph << " mph is " << result << " km/h.\n";
+		logConversion(input + " mph = " + to_string(result) + " km/h");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
