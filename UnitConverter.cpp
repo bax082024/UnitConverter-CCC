@@ -49,12 +49,13 @@ int main() {
 			case 8: poundsToKilograms(); break;
 			case 9: litersToGallons(); break;
 			case 10: gallonsToLiters(); break;
-			case 11: cout << "Exiting program. Goodbye!\n"; break;
+			case 11: viewHistory(); break;
+			case 12: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
 			
 		}
 
-	} while (choice != 11);
+	} while (choice != 12);
 	return 0;
 	
 }
