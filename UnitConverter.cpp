@@ -1,11 +1,14 @@
 ﻿
 #include <iostream>
-#include <fstream> // for file handling
-#include <string> // for string handling
+#include <iomanip>
+#include <fstream> 
+#include <sstream>
+#include <string>
+#include <bitset>
+
 
 using namespace std;
 
-// Functions
 void showMenu();
 void metersToFeet();
 void feetToMeters();
@@ -29,6 +32,11 @@ void megabytesToGigabytes();
 void gigabytesToMegabytes();
 void bitsToBytes();
 void bytesToBits();
+void binaryToDecimal();
+void decimalToBinary();
+void textToBinary();
+void binaryToText();
+void textToHexadecimal();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -73,9 +81,15 @@ int main() {
 			case 20: gigabytesToMegabytes(); break;
 			case 21: bitsToBytes(); break;
 			case 22: bytesToBits(); break;
+			case 23: binaryToDecimal(); break;
+			case 24: decimalToBinary(); break;
+			case 25: textToBinary(); break;
+			case 26: binaryToText(); break;
+			case 27: textToHexadecimal(); break;
 
-			case 25: viewHistory(); break;
-			case 26: cout << "Exiting program. Goodbye!\n"; break;
+
+			case 40: viewHistory(); break;
+			case 41: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
 			
 		}
@@ -130,6 +144,14 @@ void showMenu() {
 	cout << " 20. Convert Gigabytes to Megabytes\n";
 	cout << " 21. Convert Bits to Bytes\n";
 	cout << " 22. Convert Bytes to Bits\n";
+
+	cout << "\n DIGITAL CONVERSIONS:\n";
+	cout << " 23. Binary to Decimal\n";
+	cout << " 24. Decimal to Binary\n";
+	cout << " 25. Text to Binary\n";
+	cout << " 26. Binary to Text\n";
+	cout << " 27. Hexadecimal to Text\n";
+
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
@@ -785,6 +807,184 @@ void bytesToBits() {
 		cout << "   " << bytes << " Bytes  =  " << result << " Bits  \n";
 		cout << "-------------------------------------------\n";
 		logConversion(input + " Bytes = " + to_string(result) + " Bits");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void binaryToDecimal() {
+	string binaryInput;
+	char choice;
+
+	do {
+		cout << "Enter a binary number : ";
+		cin >> binaryInput;
+
+		if (binaryInput == "b" || binaryInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		bool validBinary = true;
+		for (char c : binaryInput) {
+			if (c != '0' && c != '1') {
+				validBinary = false;
+				break;
+			}
+		}
+
+		if (!validBinary) {
+			cout << "Invalid binary number! Please enter only 0s and 1s.\n";
+			continue;
+		}
+
+		int decimalValue = stoi(binaryInput, nullptr, 2);
+		cout << "\n-------------------------------------------\n";
+		cout << "   Binary: " << binaryInput << "  =  Decimal: " << decimalValue << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(binaryInput + " (binary) = " + to_string(decimalValue) + " (decimal)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void decimalToBinary() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter a decimal number : ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		int decimal;
+		try {
+			decimal = stoi(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		string binary = bitset<32>(decimal).to_string();
+
+		binary.erase(0, binary.find_first_not_of('0'));
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Decimal: " << decimal << "  =  Binary: " << binary << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(to_string(decimal) + " (decimal) = " + binary + " (binary)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void textToBinary() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text (or type 'b' to go back): ";
+		cin.ignore(); 
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string binaryOutput = "";
+		for (char c : text) {
+			binaryOutput += bitset<8>(c).to_string() + " "; 
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Binary: " << binaryOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + binaryOutput + " (binary)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void binaryToText() {
+	string binaryInput;
+	char choice;
+
+	do {
+		cout << "Enter a binary string (8-bit groups, space-separated) or type 'b' to go back: ";
+		cin.ignore();
+		getline(cin, binaryInput);
+
+		if (binaryInput == "b" || binaryInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(binaryInput);
+		string binaryChunk;
+		string textOutput = "";
+
+		while (ss >> binaryChunk) {
+			if (binaryChunk.length() != 8 || binaryChunk.find_first_not_of("01") != string::npos) {
+				cout << "Invalid binary format! Enter 8-bit groups separated by spaces.\n";
+				continue;
+			}
+
+			char character = static_cast<char>(bitset<8>(binaryChunk).to_ulong());
+			textOutput += character;
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Binary: " << binaryInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(binaryInput + " (binary) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void textToHexadecimal() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text (or type 'b' to go back): ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream hexStream;
+		hexStream << hex << uppercase;
+
+		for (char c : text) {
+			hexStream << setw(2) << setfill('0') << static_cast<int>(c) << " ";
+		}
+
+		string hexOutput = hexStream.str();
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Hexadecimal: " << hexOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + hexOutput + " (hex)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
