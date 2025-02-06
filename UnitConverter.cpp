@@ -103,3 +103,10 @@ void celsiusToFahrenheit() {
 	cin >> celsius;
 	cout << celsius << " degrees Celsius is equal to " << celsius * 9 / 5 + 32 << " degrees Fahrenheit.\n";
 }
+
+void fahrenheitToCelsius() {
+	double fahrenheit;
+	cout << "Enter the temperature in Fahrenheit: ";
+	cin >> fahrenheit;
+	cout << fahrenheit << " degrees Fahrenheit is equal to " << (fahrenheit - 32) * 5 / 9 << " degrees Celsius.\n";
+}
