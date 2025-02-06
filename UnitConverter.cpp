@@ -1,4 +1,4 @@
-
+ï»¿
 #include <iostream>
 #include <fstream> // for file handling
 #include <string> // for string handling
@@ -25,6 +25,8 @@ void pascalsToAtmospheres();
 void atmospheresToPascals();
 void joulesToCalories();
 void caloriesToJoules();
+void megabytesToGigabytes();
+void gigabytesToMegabytes();
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -64,8 +66,11 @@ int main() {
 			case 16: atmospheresToPascals(); break;
 			case 17: joulesToCalories(); break;
 			case 18: caloriesToJoules(); break;
-			case 20: viewHistory(); break;
-			case 21: cout << "Exiting program. Goodbye!\n"; break;
+			case 19: megabytesToGigabytes(); break;
+			case 20: gigabytesToMegabytes(); break;
+				
+			case 25: viewHistory(); break;
+			case 26: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
 			
 		}
@@ -77,27 +82,55 @@ int main() {
 
 
 void showMenu() {
-	cout << "1. Convert meters to feet\n" ;
-	cout << "2. Convert feet to meters\n" ;
-	cout << "3. Convert kilometers to miles\n" ;
-	cout << "4. Convert miles to kilometers\n" ;
-	cout << "5. Convert Celsius to Fahrenheit\n" ;
-	cout << "6. Convert Fahrenheit to Celsius\n" ;
-	cout << "7. Convert kilograms to pounds\n" ;
-	cout << "8. Convert pounds to kilograms\n" ;
-	cout << "9. Convert liters to gallons\n" ;
-	cout << "10. Convert gallons to liters\n" ;
-	cout << "11. Convert kilometers per hour to miles per hour\n";
-	cout << "12. Convert miles per hour to kilometers per hour\n";
-	cout << "13. Convert minutes to hours\n";
-	cout << "14. Convert hours to minutes\n";
-	cout << "15. Convert pascals to atmospheres\n";
-	cout << "16. Convert atmospheres to pascals\n";
-	cout << "17. Convert joules to calories\n";
-	cout << "18. Convert calories to joules\n";
-	cout << "20. View conversion history\n";
-	cout << "21. Exit\n" ;
+	cout << "\n=========================================\n";
+	cout << "          UNIT CONVERTER MENU         \n";
+	cout << "=========================================\n";
+
+	cout << "\n LENGTH CONVERSIONS:\n";
+	cout << "  1. Convert Meters to Feet\n";
+	cout << "  2. Convert Feet to Meters\n";
+	cout << "  3. Convert Kilometers to Miles\n";
+	cout << "  4. Convert Miles to Kilometers\n";
+
+	cout << "\n TEMPERATURE CONVERSIONS:\n";
+	cout << "  5. Convert Celsius to Fahrenheit\n";
+	cout << "  6. Convert Fahrenheit to Celsius\n";
+
+	cout << "\n WEIGHT CONVERSIONS:\n";
+	cout << "  7. Convert Kilograms to Pounds\n";
+	cout << "  8. Convert Pounds to Kilograms\n";
+
+	cout << "\n VOLUME CONVERSIONS:\n";
+	cout << "  9. Convert Liters to Gallons\n";
+	cout << " 10. Convert Gallons to Liters\n";
+
+	cout << "\n SPEED CONVERSIONS:\n";
+	cout << " 11. Convert Kilometers per Hour to Miles per Hour\n";
+	cout << " 12. Convert Miles per Hour to Kilometers per Hour\n";
+
+	cout << "\n TIME CONVERSIONS:\n";
+	cout << " 13. Convert Minutes to Hours\n";
+	cout << " 14. Convert Hours to Minutes\n";
+
+	cout << "\n PRESSURE CONVERSIONS:\n";
+	cout << " 15. Convert Pascals to Atmospheres\n";
+	cout << " 16. Convert Atmospheres to Pascals\n";
+
+	cout << "\n ENERGY CONVERSIONS:\n";
+	cout << " 17. Convert Joules to Calories\n";
+	cout << " 18. Convert Calories to Joules\n";
+
+	cout << "\n STORAGE CONVERSIONS:\n";
+	cout << " 19. Convert Megabytes to Gigabytes\n";
+	cout << " 20. Convert Gigabytes to Megabytes\n";
+
+	cout << "\n OTHER OPTIONS:\n";
+	cout << " 21. View Conversion History\n";
+	cout << " 22. Exit\n";
+
+	cout << "=========================================\n";
 }
+
 
 void logConversion(const string& conversion) {
 	ofstream file(historyFile, ios::app);
@@ -230,8 +263,8 @@ void celsiusToFahrenheit() {
 			continue;
 		}
 		double result = (celsius * 9 / 5) + 32;
-		cout << celsius << "°C is " << result << "°F.\n";
-		logConversion(to_string(celsius) + "°C = " + to_string(result) + "°F");
+		cout << celsius << "Â°C is " << result << "Â°F.\n";
+		logConversion(to_string(celsius) + "Â°C = " + to_string(result) + "Â°F");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
@@ -252,8 +285,8 @@ void fahrenheitToCelsius() {
 		}
 
 		double result = (fahrenheit - 32) * 5 / 9;
-		cout << fahrenheit << "°F is " << result << "°C.\n";
-		logConversion(to_string(fahrenheit) + "°F = " + to_string(result) + "°C");
+		cout << fahrenheit << "Â°F is " << result << "Â°C.\n";
+		logConversion(to_string(fahrenheit) + "Â°F = " + to_string(result) + "Â°C");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -584,4 +617,68 @@ void caloriesToJoules() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void megabytesToGigabytes() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter storage in Megabytes (MB) (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double megabytes;
+		try {
+			megabytes = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = megabytes / 1024;
+		cout << megabytes << " MB is " << result << " GB.\n";
+		logConversion(input + " MB = " + to_string(result) + " GB");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void gigabytesToMegabytes() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter storage in Gigabytes (GB) (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double gigabytes;
+		try {
+			gigabytes = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = gigabytes * 1024;
+		cout << gigabytes << " GB is " << result << " MB.\n";
+		logConversion(input + " GB = " + to_string(result) + " MB");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
