@@ -755,5 +755,39 @@ void bitsToBytes() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void bytesToBits() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter data size in Bytes (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double bytes;
+		try {
+			bytes = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = bytes * 8;
+		cout << "\n-------------------------------------------\n";
+		cout << "   " << bytes << " Bytes  =  " << result << " Bits  \n";
+		cout << "-------------------------------------------\n";
+		logConversion(input + " Bytes = " + to_string(result) + " Bits");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
 
