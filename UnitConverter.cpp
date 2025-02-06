@@ -156,9 +156,25 @@ void feetToMeters() {
 
 void kilometersToMiles() {
 	double kilometers;
-	cout << "Enter the number of kilometers: ";
-	cin >> kilometers;
-	cout << kilometers << " kilometers is equal to " << kilometers * 0.621371 << " miles.\n";
+	char choice;
+	do {
+		cout << "Enter kilometers: ";
+		cin >> kilometers;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = kilometers * 0.621371;
+		cout << kilometers << " kilometers is " << result << " miles.\n";
+		logConversion(to_string(kilometers) + " km = " + to_string(result) + " miles");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void milesToKilometers() {
