@@ -1,11 +1,11 @@
 ﻿
 #include <iostream>
-#include <fstream> // for file handling
-#include <string> // for string handling
+#include <fstream> 
+#include <string>
+#include <bitset>
 
 using namespace std;
 
-// Functions
 void showMenu();
 void metersToFeet();
 void feetToMeters();
@@ -792,6 +792,44 @@ void bytesToBits() {
 		cout << "   " << bytes << " Bytes  =  " << result << " Bits  \n";
 		cout << "-------------------------------------------\n";
 		logConversion(input + " Bytes = " + to_string(result) + " Bits");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void binaryToDecimal() {
+	string binaryInput;
+	char choice;
+
+	do {
+		cout << "Enter a binary number (or type 'b' to go back): ";
+		cin >> binaryInput;
+
+		if (binaryInput == "b" || binaryInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		bool validBinary = true;
+		for (char c : binaryInput) {
+			if (c != '0' && c != '1') {
+				validBinary = false;
+				break;
+			}
+		}
+
+		if (!validBinary) {
+			cout << "Invalid binary number! Please enter only 0s and 1s.\n";
+			continue;
+		}
+
+		int decimalValue = stoi(binaryInput, nullptr, 2);
+		cout << "\n-------------------------------------------\n";
+		cout << "   Binary: " << binaryInput << "  =  Decimal: " << decimalValue << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(binaryInput + " (binary) = " + to_string(decimalValue) + " (decimal)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
