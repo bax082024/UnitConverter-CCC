@@ -26,6 +26,7 @@ void atmospheresToPascals();
 void joulesToCalories();
 void caloriesToJoules();
 void megabytesToGigabytes();
+void gigabytesToMegabytes();
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -66,6 +67,8 @@ int main() {
 			case 17: joulesToCalories(); break;
 			case 18: caloriesToJoules(); break;
 			case 19: megabytesToGigabytes(); break;
+			case 20: gigabytesToMegabytes(); break;
+				
 			case 25: viewHistory(); break;
 			case 26: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -98,6 +101,7 @@ void showMenu() {
 	cout << "17. Convert joules to calories\n";
 	cout << "18. Convert calories to joules\n";
 	cout << "19. Convert megabytes to gigabytes\n";
+	cout << "20. Convert gigabytes to megabytes\n";
 	cout << "25. View conversion history\n";
 	cout << "26. Exit\n" ;
 }
