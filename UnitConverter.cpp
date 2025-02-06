@@ -551,3 +551,34 @@ void joulesToCalories() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void caloriesToJoules() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter energy in Calories (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double calories;
+		try {
+			calories = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = calories * 4.184;
+		cout << calories << " Calories is " << result << " Joules.\n";
+		logConversion(input + " Calories = " + to_string(result) + " Joules");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
