@@ -27,6 +27,8 @@ void joulesToCalories();
 void caloriesToJoules();
 void megabytesToGigabytes();
 void gigabytesToMegabytes();
+void bitsToBytes();
+
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -68,7 +70,8 @@ int main() {
 			case 18: caloriesToJoules(); break;
 			case 19: megabytesToGigabytes(); break;
 			case 20: gigabytesToMegabytes(); break;
-				
+			case 21: bitsToBytes(); break;
+
 			case 25: viewHistory(); break;
 			case 26: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -123,10 +126,11 @@ void showMenu() {
 	cout << "\n STORAGE CONVERSIONS:\n";
 	cout << " 19. Convert Megabytes to Gigabytes\n";
 	cout << " 20. Convert Gigabytes to Megabytes\n";
+	cout << " 21. Convert Bits to Bytes\n";
 
 	cout << "\n OTHER OPTIONS:\n";
-	cout << " 21. View Conversion History\n";
-	cout << " 22. Exit\n";
+	cout << " 30. View Conversion History\n";
+	cout << " 31. Exit\n";
 
 	cout << "=========================================\n";
 }
