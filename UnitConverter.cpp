@@ -718,5 +718,38 @@ void gigabytesToMegabytes() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void bitsToBytes() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter data size in Bits (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double bits;
+		try {
+			bits = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = bits / 8;
+		cout << "\n-------------------------------------------\n";
+		cout << "   " << bits << " Bits  =  " << result << " Bytes  \n";
+		cout << "-------------------------------------------\n";
+		logConversion(input + " Bits = " + to_string(result) + " Bytes");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
