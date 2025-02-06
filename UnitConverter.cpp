@@ -240,9 +240,25 @@ void fahrenheitToCelsius() {
 
 void kilogramsToPounds() {
 	double kilograms;
-	cout << "Enter the number of kilograms: ";
-	cin >> kilograms;
-	cout << kilograms << " kilograms is equal to " << kilograms * 2.20462 << " pounds.\n";
+	char choice;
+	do {
+		cout << "Enter the number of kilograms: ";
+		cin >> kilograms;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = kilograms * 2.20462;
+		cout << kilograms << " kg is " << result << " pounds.\n";
+		logConversion(to_string(kilograms) + " kg = " + to_string(result) + " lbs");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void poundsToKilograms() {
