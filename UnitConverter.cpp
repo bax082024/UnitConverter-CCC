@@ -390,3 +390,30 @@ void mphToKmPerHour() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void minutesToHour() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter minutes (or type 'b' to go back): ";
+		cin >> input;
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+		double minutes;
+		try {
+			minutes = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+		double result = minutes / 60;
+		cout << minutes << " minutes is " << result << " hours.\n";
+		logConversion(input + " minutes = " + to_string(result) + " hours");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
