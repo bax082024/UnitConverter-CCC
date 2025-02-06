@@ -862,10 +862,8 @@ void decimalToBinary() {
 			continue;
 		}
 
-		// Convert decimal to binary
 		string binary = bitset<32>(decimal).to_string();
 
-		// Remove leading zeros
 		binary.erase(0, binary.find_first_not_of('0'));
 
 		cout << "\n-------------------------------------------\n";
@@ -873,6 +871,36 @@ void decimalToBinary() {
 		cout << "-------------------------------------------\n";
 
 		logConversion(to_string(decimal) + " (decimal) = " + binary + " (binary)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void textToBinary() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text (or type 'b' to go back): ";
+		cin.ignore(); 
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string binaryOutput = "";
+		for (char c : text) {
+			binaryOutput += bitset<8>(c).to_string() + " "; 
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Binary: " << binaryOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + binaryOutput + " (binary)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
