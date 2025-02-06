@@ -22,6 +22,7 @@ void mphToKmPerHour();
 void minutesToHour();
 void hoursToMinutes();
 void pascalsToAtmospheres();
+void atmospheresToPascals();
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -58,6 +59,7 @@ int main() {
 			case 13: minutesToHour(); break;
 			case 14: hoursToMinutes(); break;
 			case 15: pascalsToAtmospheres(); break;
+			case 16: atmospheresToPascals(); break;
 			case 20: viewHistory(); break;
 			case 21: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -86,6 +88,7 @@ void showMenu() {
 	cout << "13. Convert minutes to hours\n";
 	cout << "14. Convert hours to minutes\n";
 	cout << "15. Convert pascals to atmospheres\n";
+	cout << "16. Convert atmospheres to pascals\n";
 	cout << "20. View conversion history\n";
 	cout << "21. Exit\n" ;
 }
