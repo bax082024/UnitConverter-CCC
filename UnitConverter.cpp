@@ -516,3 +516,35 @@ void atmospheresToPascals() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void joulesToCalories() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter energy in Joules (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double joules;
+		try {
+			joules = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = joules * 0.239006;
+		cout << joules << " Joules is " << result << " Calories.\n";
+		logConversion(input + " Joules = " + to_string(result) + " Calories");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
