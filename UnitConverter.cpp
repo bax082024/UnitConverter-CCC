@@ -36,6 +36,7 @@ void binaryToDecimal();
 void decimalToBinary();
 void textToBinary();
 void binaryToText();
+void textToHexadecimal();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -84,6 +85,7 @@ int main() {
 			case 24: decimalToBinary(); break;
 			case 25: textToBinary(); break;
 			case 26: binaryToText(); break;
+			case 27: textToHexadecimal(); break;
 
 
 			case 40: viewHistory(); break;
@@ -148,6 +150,7 @@ void showMenu() {
 	cout << " 24. Decimal to Binary\n";
 	cout << " 25. Text to Binary\n";
 	cout << " 26. Binary to Text\n";
+	cout << " 27. Hexadecimal to Text\n";
 
 
 	cout << "\n OTHER OPTIONS:\n";
