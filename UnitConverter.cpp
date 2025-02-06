@@ -21,7 +21,7 @@ void kmPerHourToMph();
 void mphToKmPerHour();
 void minutesToHour();
 void hoursToMinutes();
-void pascalToAtmospheres();
+void pascalsToAtmospheres();
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -57,7 +57,7 @@ int main() {
 			case 12: mphToKmPerHour(); break;
 			case 13: minutesToHour(); break;
 			case 14: hoursToMinutes(); break;
-			case 15: pascalToAtmospheres(); break;
+			case 15: pascalsToAtmospheres(); break;
 			case 20: viewHistory(); break;
 			case 21: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -453,17 +453,19 @@ void hoursToMinutes() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
-void pascalToAtmospheres() {
+void pascalsToAtmospheres() {
 	string input;
 	char choice;
 
 	do {
-		cout << "Enter pressure in pascals (or type 'b' to go back): ";
+		cout << "Enter pressure in Pascals (or type 'b' to go back): ";
 		cin >> input;
+
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
 			return;
 		}
+
 		double pascals;
 		try {
 			pascals = stod(input);
@@ -472,9 +474,12 @@ void pascalToAtmospheres() {
 			cout << "Invalid input! Please enter a valid number.\n";
 			continue;
 		}
+
 		double result = pascals / 101325;
-		cout << pascals << " pascals is " << result << " atmospheres.\n";
-		logConversion(input + " pascals = " + to_string(result) + " atmospheres");
+		cout << pascals << " Pascals is " << result << " atmospheres.\n";
+		logConversion(input + " Pascals = " + to_string(result) + " atm");
+
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
+}
