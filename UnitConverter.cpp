@@ -309,7 +309,23 @@ void litersToGallons() {
 
 void gallonsToLiters() {
 	double gallons;
-	cout << "Enter the number of gallons: ";
-	cin >> gallons;
-	cout << gallons << " gallons is equal to " << gallons / 3.78541 << " liters.\n";
+	char choice;
+	do {
+		cout << "Enter the number of gallons: ";
+		cin >> gallons;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = gallons * 3.78541;
+		cout << gallons << " gallons is " << result << " liters.\n";
+		logConversion(to_string(gallons) + " gallons = " + to_string(result) + " liters");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
