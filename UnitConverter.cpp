@@ -111,7 +111,6 @@ void metersToFeet() {
 		cout << "Enter meters: ";
 		cin >> meters;
 
-		// Input validation
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -123,7 +122,6 @@ void metersToFeet() {
 		cout << meters << " meters is " << result << " feet.\n";
 		logConversion(to_string(meters) + " meters = " + to_string(result) + " feet");
 
-		// Ask if the user wants another conversion
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
 
@@ -219,9 +217,25 @@ void celsiusToFahrenheit() {
 
 void fahrenheitToCelsius() {
 	double fahrenheit;
-	cout << "Enter the temperature in Fahrenheit: ";
-	cin >> fahrenheit;
-	cout << fahrenheit << " degrees Fahrenheit is equal to " << (fahrenheit - 32) * 5 / 9 << " degrees Celsius.\n";
+	char choice;
+	do {
+		cout << "Enter the temperature in Fahrenheit: ";
+		cin >> fahrenheit;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = (fahrenheit - 32) * 5 / 9;
+		cout << fahrenheit << "°F is " << result << "°C.\n";
+		logConversion(to_string(fahrenheit) + "°F = " + to_string(result) + "°C");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void kilogramsToPounds() {
