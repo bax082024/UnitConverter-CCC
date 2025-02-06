@@ -483,3 +483,33 @@ void pascalsToAtmospheres() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void atmospheresToPascals() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter pressure in atmospheres (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double atmospheres;
+		try {
+			atmospheres = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = atmospheres * 101325;
+		cout << atmospheres << " atmospheres is " << result << " Pascals.\n";
+		logConversion(input + " atmospheres = " + to_string(result) + " Pascals");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
