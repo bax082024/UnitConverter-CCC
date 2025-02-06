@@ -23,6 +23,8 @@ void minutesToHour();
 void hoursToMinutes();
 void pascalsToAtmospheres();
 void atmospheresToPascals();
+void joulesToCalories();
+void caloriesToJoules();
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -60,6 +62,8 @@ int main() {
 			case 14: hoursToMinutes(); break;
 			case 15: pascalsToAtmospheres(); break;
 			case 16: atmospheresToPascals(); break;
+			case 17: joulesToCalories(); break;
+			case 18: caloriesToJoules(); break;
 			case 20: viewHistory(); break;
 			case 21: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -89,6 +93,8 @@ void showMenu() {
 	cout << "14. Convert hours to minutes\n";
 	cout << "15. Convert pascals to atmospheres\n";
 	cout << "16. Convert atmospheres to pascals\n";
+	cout << "17. Convert joules to calories\n";
+	cout << "18. Convert calories to joules\n";
 	cout << "20. View conversion history\n";
 	cout << "21. Exit\n" ;
 }
@@ -516,3 +522,66 @@ void atmospheresToPascals() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void joulesToCalories() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter energy in Joules (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double joules;
+		try {
+			joules = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = joules * 0.239006;
+		cout << joules << " Joules is " << result << " Calories.\n";
+		logConversion(input + " Joules = " + to_string(result) + " Calories");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void caloriesToJoules() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter energy in Calories (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double calories;
+		try {
+			calories = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = calories * 4.184;
+		cout << calories << " Calories is " << result << " Joules.\n";
+		logConversion(input + " Calories = " + to_string(result) + " Joules");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
