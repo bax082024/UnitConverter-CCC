@@ -117,3 +117,10 @@ void kilogramsToPounds() {
 	cin >> kilograms;
 	cout << kilograms << " kilograms is equal to " << kilograms * 2.20462 << " pounds.\n";
 }
+
+void poundsToKilograms() {
+	double pounds;
+	cout << "Enter the number of pounds: ";
+	cin >> pounds;
+	cout << pounds << " pounds is equal to " << pounds / 0.453592 << " kilograms.\n";
+}
