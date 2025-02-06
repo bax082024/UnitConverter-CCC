@@ -29,6 +29,7 @@ void megabytesToGigabytes();
 void gigabytesToMegabytes();
 void bitsToBytes();
 void bytesToBits();
+void binaryToDecimal();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -73,6 +74,7 @@ int main() {
 			case 20: gigabytesToMegabytes(); break;
 			case 21: bitsToBytes(); break;
 			case 22: bytesToBits(); break;
+			case 23: binaryToDecimal(); break;
 
 			case 25: viewHistory(); break;
 			case 26: cout << "Exiting program. Goodbye!\n"; break;
@@ -132,7 +134,7 @@ void showMenu() {
 	cout << " 22. Convert Bytes to Bits\n";
 
 	cout << "\n DIGITAL CONVERSIONS:\n";
-	cout << " 23. Binary Converter\n";
+	cout << " 23. Binary to Decimal\n";
 	cout << " 24. Hexadecimal Converter\n";
 	cout << " 25. Base64 Converter\n";
 	cout << " 26. ROT13 Cipher\n";
