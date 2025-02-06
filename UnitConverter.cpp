@@ -263,9 +263,25 @@ void kilogramsToPounds() {
 
 void poundsToKilograms() {
 	double pounds;
-	cout << "Enter the number of pounds: ";
-	cin >> pounds;
-	cout << pounds << " pounds is equal to " << pounds / 0.453592 << " kilograms.\n";
+	char choice;
+	do {
+		cout << "Enter the number of pounds: ";
+		cin >> pounds;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = pounds * 0.453592;
+		cout << pounds << " lbs is " << result << " kg.\n";
+		logConversion(to_string(pounds) + " lbs = " + to_string(result) + " kg");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void litersToGallons() {
