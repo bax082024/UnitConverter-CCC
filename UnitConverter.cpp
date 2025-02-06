@@ -286,9 +286,25 @@ void poundsToKilograms() {
 
 void litersToGallons() {
 	double liters;
-	cout << "Enter the number of liters: ";
-	cin >> liters;
-	cout << liters << " liters is equal to " << liters * 0.264172 << " gallons.\n";
+	char choice;
+	do {
+		cout << "Enter the number of liters: ";
+		cin >> liters;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = liters * 0.264172;
+		cout << liters << " liters is " << result << " gallons.\n";
+		logConversion(to_string(liters) + " liters = " + to_string(result) + " gallons");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void gallonsToLiters() {
