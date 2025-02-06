@@ -420,3 +420,29 @@ void minutesToHour() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void hoursToMinutes() {
+	string input;
+	char choice;
+	do {
+		cout << "Enter hours (or type 'b' to go back): ";
+		cin >> input;
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+		double hours;
+		try {
+			hours = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+		double result = hours * 60;
+		cout << hours << " hours is " << result << " minutes.\n";
+		logConversion(input + " hours = " + to_string(result) + " minutes");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
