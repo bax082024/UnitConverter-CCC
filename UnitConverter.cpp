@@ -124,3 +124,11 @@ void poundsToKilograms() {
 	cin >> pounds;
 	cout << pounds << " pounds is equal to " << pounds / 0.453592 << " kilograms.\n";
 }
+
+void litersToGallons() {
+	double liters;
+	cout << "Enter the number of liters: ";
+	cin >> liters;
+	cout << liters << " liters is equal to " << liters * 0.264172 << " gallons.\n";
+}
+
