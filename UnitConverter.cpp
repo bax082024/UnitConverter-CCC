@@ -199,9 +199,22 @@ void milesToKilometers() {
 
 void celsiusToFahrenheit() {
 	double celsius;
-	cout << "Enter the temperature in Celsius: ";
-	cin >> celsius;
-	cout << celsius << " degrees Celsius is equal to " << celsius * 9 / 5 + 32 << " degrees Fahrenheit.\n";
+	char choice;
+	do {
+		cout << "Enter Celsius: ";
+		cin >> celsius;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+		double result = (celsius * 9 / 5) + 32;
+		cout << celsius << "°C is " << result << "°F.\n";
+		logConversion(to_string(celsius) + "°C = " + to_string(result) + "°F");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void fahrenheitToCelsius() {
