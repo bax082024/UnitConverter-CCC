@@ -21,6 +21,8 @@ void gallonsToLiters();
 void viewHistory();
 void logConversion(const string& conversion);
 
+const string historyFile = "history.txt";
+
 int main() {
 	int choice;
 
