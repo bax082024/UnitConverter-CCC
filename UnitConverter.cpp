@@ -133,9 +133,25 @@ void metersToFeet() {
 
 void feetToMeters() {
 	double feet;
-	cout << "Enter the number of feet: ";
-	cin >> feet;
-	cout << feet << " feet is equal to " << feet / 0.3048 << " meters.\n";
+	char choice;
+	do {
+		cout << "Enter feet: ";
+		cin >> feet;
+
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = feet * 0.3048;
+		cout << feet << " feet is " << result << " meters.\n";
+		logConversion(to_string(feet) + " feet = " + to_string(result) + " meters");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void kilometersToMiles() {
