@@ -49,6 +49,7 @@ int main() {
 			case 9: litersToGallons(); break;
 			case 10: gallonsToLiters(); break;
 			case 11: kmPerHourToMph(); break;
+			case 12: mphToKmPerHour(); break;
 			case 20: viewHistory(); break;
 			case 21: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -73,6 +74,7 @@ void showMenu() {
 	cout << "9. Convert liters to gallons\n" ;
 	cout << "10. Convert gallons to liters\n" ;
 	cout << "11. Convert kilometers per hour to miles per hour\n";
+	cout << "12. Convert miles per hour to kilometers per hour\n";
 	cout << "20. View conversion history\n";
 	cout << "21. Exit\n" ;
 }
