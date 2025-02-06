@@ -132,3 +132,9 @@ void litersToGallons() {
 	cout << liters << " liters is equal to " << liters * 0.264172 << " gallons.\n";
 }
 
+void gallonsToLiters() {
+	double gallons;
+	cout << "Enter the number of gallons: ";
+	cin >> gallons;
+	cout << gallons << " gallons is equal to " << gallons / 3.78541 << " liters.\n";
+}
