@@ -105,10 +105,31 @@ void viewHistory() {
 
 void metersToFeet() {
 	double meters;
-	cout << "Enter the number of meters: ";
-	cin >> meters;
-	cout << meters << " meters is equal to " << meters * 3.28084 << " feet.\n";
+	char choice;
+
+	do {
+		cout << "Enter meters: ";
+		cin >> meters;
+
+		// Input validation
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = meters * 3.28084;
+		cout << meters << " meters is " << result << " feet.\n";
+		logConversion(to_string(meters) + " meters = " + to_string(result) + " feet");
+
+		// Ask if the user wants another conversion
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+
+	} while (choice == 'y' || choice == 'Y');
 }
+
 
 void feetToMeters() {
 	double feet;
