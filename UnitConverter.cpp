@@ -89,3 +89,10 @@ void kilometersToMiles() {
 	cin >> kilometers;
 	cout << kilometers << " kilometers is equal to " << kilometers * 0.621371 << " miles.\n";
 }
+
+void milesToKilometers() {
+	double miles;
+	cout << "Enter the number of miles: ";
+	cin >> miles;
+	cout << miles << " miles is equal to " << miles / 1.60934 << " kilometers.\n";
+}
