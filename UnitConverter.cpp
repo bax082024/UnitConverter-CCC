@@ -805,7 +805,7 @@ void binaryToDecimal() {
 	char choice;
 
 	do {
-		cout << "Enter a binary number (or type 'b' to go back): ";
+		cout << "Enter a binary number : ";
 		cin >> binaryInput;
 
 		if (binaryInput == "b" || binaryInput == "B") {
@@ -832,6 +832,45 @@ void binaryToDecimal() {
 		cout << "-------------------------------------------\n";
 
 		logConversion(binaryInput + " (binary) = " + to_string(decimalValue) + " (decimal)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void decimalToBinary() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter a decimal number : ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		int decimal;
+		try {
+			decimal = stoi(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		// Convert decimal to binary
+		string binary = bitset<32>(decimal).to_string();
+
+		// Remove leading zeros
+		binary.erase(0, binary.find_first_not_of('0'));
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Decimal: " << decimal << "  =  Binary: " << binary << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(to_string(decimal) + " (decimal) = " + binary + " (binary)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;

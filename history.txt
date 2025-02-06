@@ -8,3 +8,4 @@
 1200 Calories = 5020.800000 Joules
 800 Calories = 3347.200000 Joules
 12.000000 feet = 3.657600 meters
+01001010101010101 (binary) = 38229 (decimal)
