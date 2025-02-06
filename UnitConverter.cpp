@@ -131,6 +131,13 @@ void showMenu() {
 	cout << " 21. Convert Bits to Bytes\n";
 	cout << " 22. Convert Bytes to Bits\n";
 
+	cout << "\n DIGITAL CONVERSIONS:\n";
+	cout << " 23. Binary Converter\n";
+	cout << " 24. Hexadecimal Converter\n";
+	cout << " 25. Base64 Converter\n";
+	cout << " 26. ROT13 Cipher\n";
+
+
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
 	cout << " 31. Exit\n";
