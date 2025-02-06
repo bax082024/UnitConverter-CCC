@@ -23,6 +23,7 @@ void minutesToHour();
 void hoursToMinutes();
 void pascalsToAtmospheres();
 void atmospheresToPascals();
+void joulesToCalories();
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -60,6 +61,7 @@ int main() {
 			case 14: hoursToMinutes(); break;
 			case 15: pascalsToAtmospheres(); break;
 			case 16: atmospheresToPascals(); break;
+			case 17: joulesToCalories(); break;
 			case 20: viewHistory(); break;
 			case 21: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -89,6 +91,7 @@ void showMenu() {
 	cout << "14. Convert hours to minutes\n";
 	cout << "15. Convert pascals to atmospheres\n";
 	cout << "16. Convert atmospheres to pascals\n";
+	cout << "17. Convert joules to calories\n";
 	cout << "20. View conversion history\n";
 	cout << "21. Exit\n" ;
 }
