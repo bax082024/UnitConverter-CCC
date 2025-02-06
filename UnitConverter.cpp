@@ -1,9 +1,11 @@
 ﻿
 #include <iostream>
+#include <iomanip>
 #include <fstream> 
 #include <sstream>
 #include <string>
 #include <bitset>
+
 
 using namespace std;
 
@@ -946,6 +948,40 @@ void binaryToText() {
 		cout << "-------------------------------------------\n";
 
 		logConversion(binaryInput + " (binary) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void textToHexadecimal() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text (or type 'b' to go back): ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream hexStream;
+		hexStream << hex << uppercase;
+
+		for (char c : text) {
+			hexStream << setw(2) << setfill('0') << static_cast<int>(c) << " ";
+		}
+
+		string hexOutput = hexStream.str();
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Hexadecimal: " << hexOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + hexOutput + " (hex)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
