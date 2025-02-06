@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream> // for file handling
+#include <string> // for string handling
 
 using namespace std;
 
@@ -85,6 +86,21 @@ void logConversion(const string& conversion) {
 	else {
 		cout << "Error: Unable to save conversion history.\n";
 	}
+}
+
+void viewHistory() {
+	ifstream file(historyFile);
+	if (!file) {
+		cout << "No history found.\n";
+		return;
+	}
+
+	cout << "\n--- Conversion History ---\n";
+	string line;
+	while (getline(file, line)) {
+		cout << line << endl;
+	}
+	file.close();
 }
 
 void metersToFeet() {
