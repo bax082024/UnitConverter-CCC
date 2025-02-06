@@ -75,3 +75,10 @@ void metersToFeet() {
 	cin >> meters;
 	cout << meters << " meters is equal to " << meters * 3.28084 << " feet.\n";
 }
+
+void feetToMeters() {
+	double feet;
+	cout << "Enter the number of feet: ";
+	cin >> feet;
+	cout << feet << " feet is equal to " << feet / 0.3048 << " meters.\n";
+}
