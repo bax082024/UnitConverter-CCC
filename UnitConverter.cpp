@@ -619,4 +619,36 @@ void megabytesToGigabytes() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void gigabytesToMegabytes() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter storage in Gigabytes (GB) (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double gigabytes;
+		try {
+			gigabytes = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = gigabytes * 1024;
+		cout << gigabytes << " GB is " << result << " MB.\n";
+		logConversion(input + " GB = " + to_string(result) + " MB");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
