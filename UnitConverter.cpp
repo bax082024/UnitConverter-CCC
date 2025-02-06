@@ -72,7 +72,19 @@ void showMenu() {
 	cout << "8. Convert pounds to kilograms\n" ;
 	cout << "9. Convert liters to gallons\n" ;
 	cout << "10. Convert gallons to liters\n" ;
-	cout << "11. Exit\n" ;
+	cout << "11. View conversion history\n";
+	cout << "12. Exit\n" ;
+}
+
+void logConversion(const string& conversion) {
+	ofstream file(historyFile, ios::app);
+	if (file.is_open()) {
+		file << conversion << endl;
+		file.close();
+	}
+	else {
+		cout << "Error: Unable to save conversion history.\n";
+	}
 }
 
 void metersToFeet() {
