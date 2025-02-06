@@ -68,3 +68,10 @@ void showMenu() {
 	cout << "10. Convert gallons to liters\n" ;
 	cout << "11. Exit\n" ;
 }
+
+void metersToFeet() {
+	double meters;
+	cout << "Enter the number of meters: ";
+	cin >> meters;
+	cout << meters << " meters is equal to " << meters * 3.28084 << " feet.\n";
+}
