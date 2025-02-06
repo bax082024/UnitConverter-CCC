@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <fstream> // for file handling
 
 using namespace std;
 
@@ -17,6 +18,8 @@ void kilogramsToPounds();
 void poundsToKilograms();
 void litersToGallons();
 void gallonsToLiters();
+void viewHistory();
+void logConversion(const string& conversion);
 
 int main() {
 	int choice;
