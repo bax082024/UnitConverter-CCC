@@ -1,2 +1,3 @@
 ﻿  UnitConverter.cpp
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(86,10): warning C4566: character represented by universal-character-name '\U0001F4CF' cannot be represented in the current code page (1252)
   UnitConverter.vcxproj -> C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\x64\Debug\UnitConverter.exe
