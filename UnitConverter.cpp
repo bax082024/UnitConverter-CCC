@@ -17,6 +17,8 @@ void kilogramsToPounds();
 void poundsToKilograms();
 void litersToGallons();
 void gallonsToLiters();
+void kmPerHourToMph();
+void mphToKmPerHour();
 void viewHistory();
 void logConversion(const string& conversion);
 
