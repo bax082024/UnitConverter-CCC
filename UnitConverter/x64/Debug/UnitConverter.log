@@ -1,7 +1,4 @@
 ﻿  UnitConverter.cpp
-UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl showMenu(void)" (?showMenu@@YAXXZ) referenced in function main
-UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl metersToFeet(void)" (?metersToFeet@@YAXXZ) referenced in function main
-UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl feetToMeters(void)" (?feetToMeters@@YAXXZ) referenced in function main
 UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl kilometersToMiles(void)" (?kilometersToMiles@@YAXXZ) referenced in function main
 UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl milesToKilometers(void)" (?milesToKilometers@@YAXXZ) referenced in function main
 UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl celsiusToFahrenheit(void)" (?celsiusToFahrenheit@@YAXXZ) referenced in function main
@@ -10,4 +7,4 @@ UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl kilo
 UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl poundsToKilograms(void)" (?poundsToKilograms@@YAXXZ) referenced in function main
 UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl litersToGallons(void)" (?litersToGallons@@YAXXZ) referenced in function main
 UnitConverter.obj : error LNK2019: unresolved external symbol "void __cdecl gallonsToLiters(void)" (?gallonsToLiters@@YAXXZ) referenced in function main
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\x64\Debug\UnitConverter.exe : fatal error LNK1120: 11 unresolved externals
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\x64\Debug\UnitConverter.exe : fatal error LNK1120: 8 unresolved externals

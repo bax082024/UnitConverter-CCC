@@ -82,3 +82,10 @@ void feetToMeters() {
 	cin >> feet;
 	cout << feet << " feet is equal to " << feet / 0.3048 << " meters.\n";
 }
+
+void kilometersToMiles() {
+	double kilometers;
+	cout << "Enter the number of kilometers: ";
+	cin >> kilometers;
+	cout << kilometers << " kilometers is equal to " << kilometers * 0.621371 << " miles.\n";
+}
