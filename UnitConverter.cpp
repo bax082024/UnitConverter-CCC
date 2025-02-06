@@ -48,8 +48,9 @@ int main() {
 			case 8: poundsToKilograms(); break;
 			case 9: litersToGallons(); break;
 			case 10: gallonsToLiters(); break;
-			case 11: viewHistory(); break;
-			case 12: cout << "Exiting program. Goodbye!\n"; break;
+			case 11: kmPerHourToMph(); break;
+			case 20: viewHistory(); break;
+			case 21: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
 			
 		}
@@ -71,8 +72,9 @@ void showMenu() {
 	cout << "8. Convert pounds to kilograms\n" ;
 	cout << "9. Convert liters to gallons\n" ;
 	cout << "10. Convert gallons to liters\n" ;
-	cout << "11. View conversion history\n";
-	cout << "12. Exit\n" ;
+	cout << "11. Convert kilometers per hour to miles per hour\n";
+	cout << "20. View conversion history\n";
+	cout << "21. Exit\n" ;
 }
 
 void logConversion(const string& conversion) {
