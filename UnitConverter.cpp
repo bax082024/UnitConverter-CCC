@@ -110,3 +110,10 @@ void fahrenheitToCelsius() {
 	cin >> fahrenheit;
 	cout << fahrenheit << " degrees Fahrenheit is equal to " << (fahrenheit - 32) * 5 / 9 << " degrees Celsius.\n";
 }
+
+void kilogramsToPounds() {
+	double kilograms;
+	cout << "Enter the number of kilograms: ";
+	cin >> kilograms;
+	cout << kilograms << " kilograms is equal to " << kilograms * 2.20462 << " pounds.\n";
+}
