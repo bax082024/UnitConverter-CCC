@@ -27,6 +27,9 @@ void joulesToCalories();
 void caloriesToJoules();
 void megabytesToGigabytes();
 void gigabytesToMegabytes();
+void bitsToBytes();
+void bytesToBits();
+
 void viewHistory();
 void logConversion(const string& conversion);
 
@@ -68,7 +71,9 @@ int main() {
 			case 18: caloriesToJoules(); break;
 			case 19: megabytesToGigabytes(); break;
 			case 20: gigabytesToMegabytes(); break;
-				
+			case 21: bitsToBytes(); break;
+			case 22: bytesToBits(); break;
+
 			case 25: viewHistory(); break;
 			case 26: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
@@ -123,10 +128,12 @@ void showMenu() {
 	cout << "\n STORAGE CONVERSIONS:\n";
 	cout << " 19. Convert Megabytes to Gigabytes\n";
 	cout << " 20. Convert Gigabytes to Megabytes\n";
+	cout << " 21. Convert Bits to Bytes\n";
+	cout << " 22. Convert Bytes to Bits\n";
 
 	cout << "\n OTHER OPTIONS:\n";
-	cout << " 21. View Conversion History\n";
-	cout << " 22. Exit\n";
+	cout << " 30. View Conversion History\n";
+	cout << " 31. Exit\n";
 
 	cout << "=========================================\n";
 }
@@ -408,7 +415,7 @@ void kmPerHourToMph() {
 	char choice;
 
 	do {
-		cout << "Enter speed in km/h (or type 'b' to go back): ";
+		cout << "Enter speed in km/h : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -440,7 +447,7 @@ void mphToKmPerHour() {
 	string input;
 	char choice;
 	do {
-		cout << "Enter speed in mph (or type 'b' to go back): ";
+		cout << "Enter speed in mph : ";
 		cin >> input;
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
@@ -469,7 +476,7 @@ void minutesToHour() {
 	char choice;
 
 	do {
-		cout << "Enter minutes (or type 'b' to go back): ";
+		cout << "Enter minutes : ";
 		cin >> input;
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
@@ -497,7 +504,7 @@ void hoursToMinutes() {
 	string input;
 	char choice;
 	do {
-		cout << "Enter hours (or type 'b' to go back): ";
+		cout << "Enter hours : ";
 		cin >> input;
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
@@ -526,7 +533,7 @@ void pascalsToAtmospheres() {
 	char choice;
 
 	do {
-		cout << "Enter pressure in Pascals (or type 'b' to go back): ";
+		cout << "Enter pressure in Pascals : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -559,7 +566,7 @@ void atmospheresToPascals() {
 	char choice;
 
 	do {
-		cout << "Enter pressure in atmospheres (or type 'b' to go back): ";
+		cout << "Enter pressure in atmospheres : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -591,7 +598,7 @@ void joulesToCalories() {
 	char choice;
 
 	do {
-		cout << "Enter energy in Joules (or type 'b' to go back): ";
+		cout << "Enter energy in Joules : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -624,7 +631,7 @@ void caloriesToJoules() {
 	char choice;
 
 	do {
-		cout << "Enter energy in Calories (or type 'b' to go back): ";
+		cout << "Enter energy in Calories : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -657,7 +664,7 @@ void megabytesToGigabytes() {
 	char choice;
 
 	do {
-		cout << "Enter storage in Megabytes (MB) (or type 'b' to go back): ";
+		cout << "Enter storage in Megabytes (MB) : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -690,7 +697,7 @@ void gigabytesToMegabytes() {
 	char choice;
 
 	do {
-		cout << "Enter storage in Gigabytes (GB) (or type 'b' to go back): ";
+		cout << "Enter storage in Gigabytes (GB) : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -717,6 +724,73 @@ void gigabytesToMegabytes() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void bitsToBytes() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter data size in Bits : ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double bits;
+		try {
+			bits = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = bits / 8;
+		cout << "\n-------------------------------------------\n";
+		cout << "   " << bits << " Bits  =  " << result << " Bytes  \n";
+		cout << "-------------------------------------------\n";
+		logConversion(input + " Bits = " + to_string(result) + " Bytes");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void bytesToBits() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter data size in Bytes : ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double bytes;
+		try {
+			bytes = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = bytes * 8;
+		cout << "\n-------------------------------------------\n";
+		cout << "   " << bytes << " Bytes  =  " << result << " Bits  \n";
+		cout << "-------------------------------------------\n";
+		logConversion(input + " Bytes = " + to_string(result) + " Bits");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
