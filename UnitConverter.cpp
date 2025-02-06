@@ -415,7 +415,7 @@ void kmPerHourToMph() {
 	char choice;
 
 	do {
-		cout << "Enter speed in km/h (or type 'b' to go back): ";
+		cout << "Enter speed in km/h : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -447,7 +447,7 @@ void mphToKmPerHour() {
 	string input;
 	char choice;
 	do {
-		cout << "Enter speed in mph (or type 'b' to go back): ";
+		cout << "Enter speed in mph : ";
 		cin >> input;
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
@@ -476,7 +476,7 @@ void minutesToHour() {
 	char choice;
 
 	do {
-		cout << "Enter minutes (or type 'b' to go back): ";
+		cout << "Enter minutes : ";
 		cin >> input;
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
@@ -504,7 +504,7 @@ void hoursToMinutes() {
 	string input;
 	char choice;
 	do {
-		cout << "Enter hours (or type 'b' to go back): ";
+		cout << "Enter hours : ";
 		cin >> input;
 		if (input == "b" || input == "B") {
 			cout << "Returning to main menu...\n";
@@ -533,7 +533,7 @@ void pascalsToAtmospheres() {
 	char choice;
 
 	do {
-		cout << "Enter pressure in Pascals (or type 'b' to go back): ";
+		cout << "Enter pressure in Pascals : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -566,7 +566,7 @@ void atmospheresToPascals() {
 	char choice;
 
 	do {
-		cout << "Enter pressure in atmospheres (or type 'b' to go back): ";
+		cout << "Enter pressure in atmospheres : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -598,7 +598,7 @@ void joulesToCalories() {
 	char choice;
 
 	do {
-		cout << "Enter energy in Joules (or type 'b' to go back): ";
+		cout << "Enter energy in Joules : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -631,7 +631,7 @@ void caloriesToJoules() {
 	char choice;
 
 	do {
-		cout << "Enter energy in Calories (or type 'b' to go back): ";
+		cout << "Enter energy in Calories : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -664,7 +664,7 @@ void megabytesToGigabytes() {
 	char choice;
 
 	do {
-		cout << "Enter storage in Megabytes (MB) (or type 'b' to go back): ";
+		cout << "Enter storage in Megabytes (MB) : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -697,7 +697,7 @@ void gigabytesToMegabytes() {
 	char choice;
 
 	do {
-		cout << "Enter storage in Gigabytes (GB) (or type 'b' to go back): ";
+		cout << "Enter storage in Gigabytes (GB) : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -730,7 +730,7 @@ void bitsToBytes() {
 	char choice;
 
 	do {
-		cout << "Enter data size in Bits (or type 'b' to go back): ";
+		cout << "Enter data size in Bits : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
@@ -763,7 +763,7 @@ void bytesToBits() {
 	char choice;
 
 	do {
-		cout << "Enter data size in Bytes (or type 'b' to go back): ";
+		cout << "Enter data size in Bytes : ";
 		cin >> input;
 
 		if (input == "b" || input == "B") {
