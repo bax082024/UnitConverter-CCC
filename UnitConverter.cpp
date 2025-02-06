@@ -96,3 +96,10 @@ void milesToKilometers() {
 	cin >> miles;
 	cout << miles << " miles is equal to " << miles / 1.60934 << " kilometers.\n";
 }
+
+void celsiusToFahrenheit() {
+	double celsius;
+	cout << "Enter the temperature in Celsius: ";
+	cin >> celsius;
+	cout << celsius << " degrees Celsius is equal to " << celsius * 9 / 5 + 32 << " degrees Fahrenheit.\n";
+}
