@@ -449,3 +449,29 @@ void hoursToMinutes() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void pascalToAtmospheres() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter pressure in pascals (or type 'b' to go back): ";
+		cin >> input;
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+		double pascals;
+		try {
+			pascals = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+		double result = pascals / 101325;
+		cout << pascals << " pascals is " << result << " atmospheres.\n";
+		logConversion(input + " pascals = " + to_string(result) + " atmospheres");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
