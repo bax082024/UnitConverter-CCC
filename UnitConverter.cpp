@@ -199,7 +199,9 @@ void feetToMeters() {
 		}
 
 		double result = feet * 0.3048;
+		cout << "\n-------------------------------------------\n";
 		cout << feet << " feet is " << result << " meters.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(feet) + " feet = " + to_string(result) + " meters");
 
 		cout << "Do another conversion? (y/n): ";
@@ -222,7 +224,9 @@ void kilometersToMiles() {
 		}
 
 		double result = kilometers * 0.621371;
+		cout << "\n-------------------------------------------\n";
 		cout << kilometers << " kilometers is " << result << " miles.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(kilometers) + " km = " + to_string(result) + " miles");
 
 		cout << "Do another conversion? (y/n): ";
@@ -243,7 +247,9 @@ void milesToKilometers() {
 			continue;
 		}
 		double result = miles * 1.60934;
+		cout << "\n-------------------------------------------\n";
 		cout << miles << " miles is " << result << " kilometers.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(miles) + " miles = " + to_string(result) + " km");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -263,7 +269,9 @@ void celsiusToFahrenheit() {
 			continue;
 		}
 		double result = (celsius * 9 / 5) + 32;
+		cout << "\n-------------------------------------------\n";
 		cout << celsius << "°C is " << result << "°F.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(celsius) + "°C = " + to_string(result) + "°F");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -285,7 +293,9 @@ void fahrenheitToCelsius() {
 		}
 
 		double result = (fahrenheit - 32) * 5 / 9;
+		cout << "\n-------------------------------------------\n";
 		cout << fahrenheit << "°F is " << result << "°C.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(fahrenheit) + "°F = " + to_string(result) + "°C");
 
 		cout << "Do another conversion? (y/n): ";
@@ -308,7 +318,9 @@ void kilogramsToPounds() {
 		}
 
 		double result = kilograms * 2.20462;
+		cout << "\n-------------------------------------------\n";
 		cout << kilograms << " kg is " << result << " pounds.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(kilograms) + " kg = " + to_string(result) + " lbs");
 
 		cout << "Do another conversion? (y/n): ";
@@ -331,7 +343,9 @@ void poundsToKilograms() {
 		}
 
 		double result = pounds * 0.453592;
+		cout << "\n-------------------------------------------\n";
 		cout << pounds << " lbs is " << result << " kg.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(pounds) + " lbs = " + to_string(result) + " kg");
 
 		cout << "Do another conversion? (y/n): ";
@@ -354,7 +368,9 @@ void litersToGallons() {
 		}
 
 		double result = liters * 0.264172;
+		cout << "\n-------------------------------------------\n";
 		cout << liters << " liters is " << result << " gallons.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(liters) + " liters = " + to_string(result) + " gallons");
 
 		cout << "Do another conversion? (y/n): ";
@@ -377,7 +393,9 @@ void gallonsToLiters() {
 		}
 
 		double result = gallons * 3.78541;
+		cout << "\n-------------------------------------------\n";
 		cout << gallons << " gallons is " << result << " liters.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(to_string(gallons) + " gallons = " + to_string(result) + " liters");
 
 		cout << "Do another conversion? (y/n): ";
@@ -408,7 +426,9 @@ void kmPerHourToMph() {
 		}
 
 		double result = kmph * 0.621371;
+		cout << "\n-------------------------------------------\n";
 		cout << kmph << " km/h is " << result << " mph.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " km/h = " + to_string(result) + " mph");
 
 		cout << "Do another conversion? (y/n): ";
@@ -435,7 +455,9 @@ void mphToKmPerHour() {
 			continue;
 		}
 		double result = mph * 1.60934;
+		cout << "\n-------------------------------------------\n";
 		cout << mph << " mph is " << result << " km/h.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " mph = " + to_string(result) + " km/h");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -462,7 +484,9 @@ void minutesToHour() {
 			continue;
 		}
 		double result = minutes / 60;
+		cout << "\n-------------------------------------------\n";
 		cout << minutes << " minutes is " << result << " hours.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " minutes = " + to_string(result) + " hours");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -488,7 +512,9 @@ void hoursToMinutes() {
 			continue;
 		}
 		double result = hours * 60;
+		cout << "\n-------------------------------------------\n";
 		cout << hours << " hours is " << result << " minutes.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " hours = " + to_string(result) + " minutes");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -518,7 +544,9 @@ void pascalsToAtmospheres() {
 		}
 
 		double result = pascals / 101325;
+		cout << "\n-------------------------------------------\n";
 		cout << pascals << " Pascals is " << result << " atmospheres.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " Pascals = " + to_string(result) + " atm");
 
 		cout << "Do another conversion? (y/n): ";
@@ -549,7 +577,9 @@ void atmospheresToPascals() {
 		}
 
 		double result = atmospheres * 101325;
+		cout << "\n-------------------------------------------\n";
 		cout << atmospheres << " atmospheres is " << result << " Pascals.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " atmospheres = " + to_string(result) + " Pascals");
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
@@ -579,7 +609,9 @@ void joulesToCalories() {
 		}
 
 		double result = joules * 0.239006;
+		cout << "\n-------------------------------------------\n";
 		cout << joules << " Joules is " << result << " Calories.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " Joules = " + to_string(result) + " Calories");
 
 		cout << "Do another conversion? (y/n): ";
@@ -610,7 +642,9 @@ void caloriesToJoules() {
 		}
 
 		double result = calories * 4.184;
+		cout << "\n-------------------------------------------\n";
 		cout << calories << " Calories is " << result << " Joules.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " Calories = " + to_string(result) + " Joules");
 
 		cout << "Do another conversion? (y/n): ";
@@ -641,7 +675,9 @@ void megabytesToGigabytes() {
 		}
 
 		double result = megabytes / 1024;
+		cout << "\n-------------------------------------------\n";
 		cout << megabytes << " MB is " << result << " GB.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " MB = " + to_string(result) + " GB");
 
 		cout << "Do another conversion? (y/n): ";
@@ -672,7 +708,9 @@ void gigabytesToMegabytes() {
 		}
 
 		double result = gigabytes * 1024;
+		cout << "\n-------------------------------------------\n";
 		cout << gigabytes << " GB is " << result << " MB.\n";
+		cout << "-------------------------------------------\n";
 		logConversion(input + " GB = " + to_string(result) + " MB");
 
 		cout << "Do another conversion? (y/n): ";
