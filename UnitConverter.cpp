@@ -179,9 +179,22 @@ void kilometersToMiles() {
 
 void milesToKilometers() {
 	double miles;
-	cout << "Enter the number of miles: ";
-	cin >> miles;
-	cout << miles << " miles is equal to " << miles / 1.60934 << " kilometers.\n";
+	char choice;
+	do {
+		cout << "Enter miles: ";
+		cin >> miles;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+		double result = miles * 1.60934;
+		cout << miles << " miles is " << result << " kilometers.\n";
+		logConversion(to_string(miles) + " miles = " + to_string(result) + " km");
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
 }
 
 void celsiusToFahrenheit() {
