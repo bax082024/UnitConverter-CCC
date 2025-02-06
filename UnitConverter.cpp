@@ -1,6 +1,7 @@
 ﻿
 #include <iostream>
 #include <fstream> 
+#include <sstream>
 #include <string>
 #include <bitset>
 
@@ -904,6 +905,45 @@ void textToBinary() {
 		cout << "-------------------------------------------\n";
 
 		logConversion(text + " (text) = " + binaryOutput + " (binary)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void binaryToText() {
+	string binaryInput;
+	char choice;
+
+	do {
+		cout << "Enter a binary string (8-bit groups, space-separated) or type 'b' to go back: ";
+		cin.ignore();
+		getline(cin, binaryInput);
+
+		if (binaryInput == "b" || binaryInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(binaryInput);
+		string binaryChunk;
+		string textOutput = "";
+
+		while (ss >> binaryChunk) {
+			if (binaryChunk.length() != 8 || binaryChunk.find_first_not_of("01") != string::npos) {
+				cout << "Invalid binary format! Enter 8-bit groups separated by spaces.\n";
+				continue;
+			}
+
+			char character = static_cast<char>(bitset<8>(binaryChunk).to_ulong());
+			textOutput += character;
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Binary: " << binaryInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(binaryInput + " (binary) = " + textOutput + " (text)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
