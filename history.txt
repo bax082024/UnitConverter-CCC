@@ -1,3 +1,5 @@
 12.000000 km = 7.456452 miles
 10.000000 kg = 22.046200 lbs
 80 km/h = 49.709680 mph
+100 Joules = 23.900600 Calories
+1300 Calories = 5439.200000 Joules
