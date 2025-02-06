@@ -30,44 +30,26 @@ int main() {
 			cin.clear();
 			cin.ignore(1000, '\n');
 			cout << "Invalid input. Please enter a number." << endl;
+			continue;
 		}
-		else {
-			switch (choice) {
-			case 1:
-				metersToFeet();
-				break;
-			case 2:
-				feetToMeters();
-				break;
-			case 3:
-				kilometersToMiles();
-				break;
-			case 4:
-				milesToKilometers();
-				break;
-			case 5:
-				celsiusToFahrenheit();
-				break;
-			case 6:
-				fahrenheitToCelsius();
-				break;
-			case 7:
-				kilogramsToPounds();
-				break;
-			case 8:
-				poundsToKilograms();
-				break;
-			case 9:
-				litersToGallons();
-				break;
-			case 10:
-				gallonsToLiters();
-				break;
-			case 11:
-				cout << "Exiting program..." << endl;
-				break;
-			default:
-				cout << "Invalid choice. Please enter a number between 1 and 11." << endl;
-				break;
-			}
+
+		switch (choice)	{
+			case 1: metersToFeet(); break;
+			case 2: feetToMeters(); break;
+			case 3: kilometersToMiles(); break;
+			case 4: milesToKilometers(); break;
+			case 5: celsiusToFahrenheit(); break;
+			case 6: fahrenheitToCelsius(); break;
+			case 7: kilogramsToPounds(); break;
+			case 8: poundsToKilograms(); break;
+			case 9: litersToGallons(); break;
+			case 10: gallonsToLiters(); break;
+			case 11: cout << "Exiting program. Goodbye!\n"; break;
+			default: cout << "Invalid choice! Please select a valid option.\n";
+			
 		}
+
+	} while (choice != 11);
+	return 0;
+	
+}
