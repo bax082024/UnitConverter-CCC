@@ -1,5 +1,3 @@
-// UnitConverter.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <fstream> // for file handling
@@ -324,6 +322,37 @@ void gallonsToLiters() {
 		double result = gallons * 3.78541;
 		cout << gallons << " gallons is " << result << " liters.\n";
 		logConversion(to_string(gallons) + " gallons = " + to_string(result) + " liters");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void kmPerHourToMph() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter speed in km/h (or type 'b' to go back): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		double kmph;
+		try {
+			kmph = stod(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		double result = kmph * 0.621371;
+		cout << kmph << " km/h is " << result << " mph.\n";
+		logConversion(input + " km/h = " + to_string(result) + " mph");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
