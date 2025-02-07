@@ -41,6 +41,8 @@ void textToHexadecimal();
 void hexadecimalToText();
 void textToBase64();
 void base64ToText();
+void textToROT13();
+void rot13ToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -1149,6 +1151,44 @@ void base64ToText() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+string applyROT13(const string& input) {
+	string output = input;
+	for (char& c : output) {
+		if (isalpha(c)) {
+			char base = isupper(c) ? 'A' : 'a';
+			c = (c - base + 13) % 26 + base;
+		}
+	}
+	return output;
+}
+
+void textToROT13() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text to encode using ROT13 : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string encodedText = applyROT13(text);
+		cout << "\n-------------------------------------------\n";
+		cout << "   Original Text: " << text << "  →  ROT13 Encoded: " << encodedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + encodedText + " (ROT13)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
