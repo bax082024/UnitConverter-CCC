@@ -50,6 +50,7 @@ void caesarCipherEncrypt();
 void caesarCipherDecrypt();
 void textToTernary();
 void ternaryToText();
+void textToOctal();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -108,6 +109,7 @@ int main() {
 			case 36: morseToText(); break;
 			case 37: textToTernary(); break;
 			case 38: ternaryToText(); break;
+			case 39: textToOctal(); break;
 
 			case 50: caesarCipherEncrypt(); break;
 			case 51: caesarCipherDecrypt(); break;
@@ -184,6 +186,7 @@ void showMenu() {
 	cout << " 34. Morse to Text\n";
 	cout << " 35. Text to Ternary\n";
 	cout << " 36. Ternary to Text\n";
+	cout << " 37. Text to Octal\n";
 
 	cout << "\n Text Encryption/Decryption:\n";
 	cout << " 50. Text to Caesar Cipher\n";
@@ -1510,6 +1513,39 @@ void ternaryToText() {
 		cout << "-------------------------------------------\n";
 
 		logConversion(ternaryInput + " (ternary) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void textToOctal() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text: ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream octalStream;
+
+		for (char c : text) {
+			octalStream << oct << static_cast<int>(c) << " ";
+		}
+
+		string octalOutput = octalStream.str();
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Octal: " << octalOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + octalOutput + " (octal)");
 
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
