@@ -893,7 +893,7 @@ void textToBinary() {
 	char choice;
 
 	do {
-		cout << "Enter text (or type 'b' to go back): ";
+		cout << "Enter text : ";
 		cin.ignore(); 
 		getline(cin, text);
 
@@ -923,7 +923,7 @@ void binaryToText() {
 	char choice;
 
 	do {
-		cout << "Enter a binary string (8-bit groups, space-separated) or type 'b' to go back: ";
+		cout << "Enter a binary string (8-bit groups, space-separated) : ";
 		cin.ignore();
 		getline(cin, binaryInput);
 
@@ -962,7 +962,7 @@ void textToHexadecimal() {
 	char choice;
 
 	do {
-		cout << "Enter text (or type 'b' to go back): ";
+		cout << "Enter text : ";
 		cin.ignore();
 		getline(cin, text);
 
