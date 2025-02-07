@@ -37,6 +37,7 @@ void decimalToBinary();
 void textToBinary();
 void binaryToText();
 void textToHexadecimal();
+void hexadecimalToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -86,6 +87,7 @@ int main() {
 			case 25: textToBinary(); break;
 			case 26: binaryToText(); break;
 			case 27: textToHexadecimal(); break;
+			case 30: hexadecimalToText(); break;
 
 
 			case 40: viewHistory(); break;
