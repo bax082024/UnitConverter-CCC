@@ -1632,6 +1632,41 @@ string convertToRoman(int num) {
 	return result;
 }
 
+void decimalToRoman() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter a decimal number (1-3999): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		int number;
+		try {
+			number = stoi(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		string romanNumeral = convertToRoman(number);
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Decimal: " << number << "  →  Roman Numeral: " << romanNumeral << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(to_string(number) + " (decimal) = " + romanNumeral + " (Roman Numeral)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
