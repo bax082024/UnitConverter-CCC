@@ -4,6 +4,7 @@
 #include <fstream> 
 #include <sstream>
 #include <string>
+#include <stdexcept>
 #include <bitset>
 #include <vector>
 
@@ -38,6 +39,7 @@ void textToBinary();
 void binaryToText();
 void textToHexadecimal();
 void hexadecimalToText();
+void textToBase64();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -88,6 +90,7 @@ int main() {
 			case 26: binaryToText(); break;
 			case 27: textToHexadecimal(); break;
 			case 30: hexadecimalToText(); break;
+			case 31: textToBase64(); break;
 
 
 			case 40: viewHistory(); break;
@@ -1066,6 +1069,54 @@ string encodeBase64UTF8(const string& input) {
 
 	return output;
 }
+
+void textToBase64() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text to convert to Base64 : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string encodedBase64 = encodeBase64UTF8(text);
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Base64: " << encodedBase64 << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + encodedBase64 + " (Base64)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+string decodeBase64UTF8(const string& input) {
+	string output;
+	vector<int> T(256, -1);
+	for (int i = 0; i < 64; i++) T[base64_chars[i]] = i;
+
+	int val = 0, bits = -8;
+	for (unsigned char c : input) {
+		if (T[c] == -1) break;
+		val = (val << 6) + T[c];
+		bits += 6;
+
+		if (bits >= 0) {
+			output.push_back(char((val >> bits) & 0xFF));
+			val &= (1 << bits) - 1;
+			bits -= 8;
+		}
+	}
+	return output;
+}
+
 
 
 
