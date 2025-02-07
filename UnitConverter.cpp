@@ -51,6 +51,7 @@ void caesarCipherDecrypt();
 void textToTernary();
 void ternaryToText();
 void textToOctal();
+void octalToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -110,6 +111,7 @@ int main() {
 			case 37: textToTernary(); break;
 			case 38: ternaryToText(); break;
 			case 39: textToOctal(); break;
+			case 40: octalToText(); break;
 
 			case 50: caesarCipherEncrypt(); break;
 			case 51: caesarCipherDecrypt(); break;
@@ -187,6 +189,7 @@ void showMenu() {
 	cout << " 35. Text to Ternary\n";
 	cout << " 36. Ternary to Text\n";
 	cout << " 37. Text to Octal\n";
+	cout << " 38. Octal to Text\n";
 
 	cout << "\n Text Encryption/Decryption:\n";
 	cout << " 50. Text to Caesar Cipher\n";
