@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 #include <bitset>
-
+#include <vector>
 
 using namespace std;
 
@@ -154,6 +154,7 @@ void showMenu() {
 	cout << " 26. Binary to Text\n";
 	cout << " 27. Hexadecimal to Text\n";
 	cout << " 28. Text to Hexadecimal\n";
+	cout << " 29. Text to Base64\n";
 
 
 	cout << "\n OTHER OPTIONS:\n";
@@ -1035,6 +1036,35 @@ void hexadecimalToText() {
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
+}
+
+const string base64_chars =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+"abcdefghijklmnopqrstuvwxyz"
+"0123456789+/";
+
+string encodeBase64UTF8(const string& input) {
+	vector<unsigned char> bytes(input.begin(), input.end());
+	string output;
+	int val = 0, bits = -6;
+
+	for (unsigned char c : bytes) {
+		val = (val << 8) + c;
+		bits += 8;
+		while (bits >= 0) {
+			output.push_back(base64_chars[(val >> bits) & 0x3F]);
+			bits -= 6;
+		}
+	}
+
+	if (bits > -6) {
+		output.push_back(base64_chars[((val << 8) >> (bits + 8)) & 0x3F]);
+	}
+	while (output.size() % 4) {
+		output.push_back('=');
+	}
+
+	return output;
 }
 
 
