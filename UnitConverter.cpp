@@ -116,8 +116,8 @@ int main() {
 			case 50: caesarCipherEncrypt(); break;
 			case 51: caesarCipherDecrypt(); break;
 
-			case 40: viewHistory(); break;
-			case 41: cout << "Exiting program. Goodbye!\n"; break;
+			case 60: viewHistory(); break;
+			case 61: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
 			
 		}
@@ -1604,6 +1604,32 @@ void octalToText() {
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
+}
+
+string convertToRoman(int num) {
+	if (num <= 0 || num > 3999) {
+		return "Invalid (Roman numerals only support 1-3999)";
+	}
+
+	struct RomanMap {
+		int value;
+		string numeral;
+	};
+
+	const RomanMap romanTable[] = {
+		{1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
+		{100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
+		{10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"}
+	};
+
+	string result = "";
+	for (const auto& entry : romanTable) {
+		while (num >= entry.value) {
+			result += entry.numeral;
+			num -= entry.value;
+		}
+	}
+	return result;
 }
 
 
