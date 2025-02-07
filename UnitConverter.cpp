@@ -1117,6 +1117,37 @@ string decodeBase64UTF8(const string& input) {
 	return output;
 }
 
+void base64ToText() {
+	string base64Input;
+	char choice;
+
+	do {
+		cout << "Enter Base64 text to decode : ";
+		cin.ignore();
+		getline(cin, base64Input);
+
+		if (base64Input == "b" || base64Input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		try {
+			string decodedText = decodeBase64UTF8(base64Input);
+			cout << "\n-------------------------------------------\n";
+			cout << "   Base64: " << base64Input << "  →  Text: " << decodedText << "\n";
+			cout << "-------------------------------------------\n";
+
+			logConversion(base64Input + " (Base64) = " + decodedText + " (text)");
+		}
+		catch (const invalid_argument& e) {
+			cout << "Error: Invalid Base64 input!\n";
+		}
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
