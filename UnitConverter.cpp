@@ -1321,6 +1321,49 @@ void morseToText() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void caesarCipherEncrypt() {
+	string input;
+	int shift;
+	char choice;
+
+	do {
+		cout << "Enter text to encrypt: ";
+		cin.ignore();
+		getline(cin, input);
+
+		cout << "Enter shift value (1-25): ";
+		cin >> shift;
+
+		if (cin.fail() || shift < 1 || shift > 25) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid shift value between 1 and 25.\n";
+			continue;
+		}
+
+		string encryptedText = "";
+		for (char c : input) {
+			if (isalpha(c)) {
+				char base = isupper(c) ? 'A' : 'a';
+				encryptedText += static_cast<char>(((c - base + shift) % 26) + base);
+			}
+			else {
+				encryptedText += c;
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Original: " << input << "\n   Encrypted: " << encryptedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(input + " (original) -> " + encryptedText + " (Caesar encrypted)");
+
+		cout << "Do another encryption? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
 
 
