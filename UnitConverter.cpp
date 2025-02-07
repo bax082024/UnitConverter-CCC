@@ -103,7 +103,8 @@ int main() {
 			case 34: rot13ToText(); break;
 			case 35: textToMorse(); break;
 			case 36: morseToText(); break;
-			case 37: caesarCipherEncrypt(); break;
+
+			case 50: caesarCipherEncrypt(); break;
 
 			case 40: viewHistory(); break;
 			case 41: cout << "Exiting program. Goodbye!\n"; break;
@@ -175,7 +176,11 @@ void showMenu() {
 	cout << " 32. ROT13 to Text\n";
 	cout << " 33. Text to Morse\n";
 	cout << " 34. Morse to Text\n";
-	cout << " 35. Text to Caesar Cipher\n";
+	
+
+	cout << "\n Text Encryption/Decryption:\n";
+	cout << " 50. Text to Caesar Cipher\n";
+
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
@@ -1364,6 +1369,49 @@ void caesarCipherEncrypt() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void caesarCipherDecrypt() {
+	string input;
+	int shift;
+	char choice;
+
+	do {
+		cout << "Enter text to decrypt: ";
+		cin.ignore();
+		getline(cin, input);
+
+		cout << "Enter shift value (1-25): ";
+		cin >> shift;
+
+		if (cin.fail() || shift < 1 || shift > 25) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid shift value between 1 and 25.\n";
+			continue;
+		}
+
+		string decryptedText = "";
+		for (char c : input) {
+			if (isalpha(c)) {
+				char base = isupper(c) ? 'A' : 'a';
+				decryptedText += static_cast<char>(((c - base - shift + 26) % 26) + base);
+			}
+			else {
+				decryptedText += c;
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Encrypted: " << input << "\n   Decrypted: " << decryptedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(input + " (Caesar encrypted) -> " + decryptedText + " (original)");
+
+		cout << "Do another decryption? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
