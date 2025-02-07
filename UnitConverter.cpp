@@ -100,6 +100,7 @@ int main() {
 			case 32: base64ToText(); break;
 			case 33: textToROT13(); break;
 			case 34: rot13ToText(); break;
+			case 35: textToMorse(); break;
 
 
 			case 40: viewHistory(); break;
@@ -170,6 +171,7 @@ void showMenu() {
 	cout << " 30. Base64 to Text\n";
 	cout << " 31. Text to ROT13\n";
 	cout << " 32. ROT13 to Text\n";
+	cout << " 33. Text to Morse\n";
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
