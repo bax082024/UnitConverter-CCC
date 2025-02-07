@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <bitset>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -43,6 +44,8 @@ void textToBase64();
 void base64ToText();
 void textToROT13();
 void rot13ToText();
+void textToMorse();
+void morseToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -97,6 +100,8 @@ int main() {
 			case 32: base64ToText(); break;
 			case 33: textToROT13(); break;
 			case 34: rot13ToText(); break;
+			case 35: textToMorse(); break;
+			case 36: morseToText(); break;
 
 
 			case 40: viewHistory(); break;
@@ -167,6 +172,8 @@ void showMenu() {
 	cout << " 30. Base64 to Text\n";
 	cout << " 31. Text to ROT13\n";
 	cout << " 32. ROT13 to Text\n";
+	cout << " 33. Text to Morse\n";
+	cout << " 34. Morse to Text\n";
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
@@ -1218,6 +1225,103 @@ void rot13ToText() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+unordered_map<char, string> morseCode = {
+	{'A', ".-"},   {'B', "-..."}, {'C', "-.-."}, {'D', "-.."},  {'E', "."},
+	{'F', "..-."}, {'G', "--."},  {'H', "...."}, {'I', ".."},   {'J', ".---"},
+	{'K', "-.-"},  {'L', ".-.."}, {'M', "--"},   {'N', "-."},   {'O', "---"},
+	{'P', ".--."}, {'Q', "--.-"}, {'R', ".-."},  {'S', "..."},  {'T', "-"},
+	{'U', "..-"},  {'V', "...-"}, {'W', ".--"},  {'X', "-..-"}, {'Y', "-.--"},
+	{'Z', "--.."},{'Æ', ".-.-" }, {'Ø', "---." }, {'Å', ".--.-" },
+	{'1', ".----"},{'2', "..---"},{'3', "...--"},{'4', "....-"},{'5', "....."},
+	{'6', "-...."},{'7', "--..."},{'8', "---.."},{'9', "----."},{'0', "-----"},
+	{' ', "/"} 
+};
+
+unordered_map<string, char> morseToChar;
+void initializeMorseToChar() {
+	for (const auto& pair : morseCode) {
+		morseToChar[pair.second] = pair.first;
+	}
+}
+
+void textToMorse() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text to convert to Morse Code : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string morseOutput;
+		for (char c : text) {
+			c = toupper(c);
+			if (morseCode.count(c)) {
+				morseOutput += morseCode[c] + " ";
+			}
+			else {
+				morseOutput += "? ";
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Morse Code: " << morseOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + morseOutput + " (Morse)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void morseToText() {
+	string morseInput;
+	char choice;
+
+	do {
+		cout << "Enter Morse Code to convert to text (use spaces between codes, '/' for spaces) : ";
+		cin.ignore();
+		getline(cin, morseInput);
+
+		if (morseInput == "b" || morseInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(morseInput);
+		string morseSymbol, textOutput = "";
+
+		while (ss >> morseSymbol) {
+			if (morseToChar.count(morseSymbol)) {
+				textOutput += morseToChar[morseSymbol];
+			}
+			else if (morseSymbol == "/") {
+				textOutput += " ";
+			}
+			else {
+				textOutput += "?";
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Morse Code: " << morseInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(morseInput + " (Morse) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
 
 
