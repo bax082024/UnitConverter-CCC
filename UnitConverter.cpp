@@ -46,6 +46,10 @@ void textToROT13();
 void rot13ToText();
 void textToMorse();
 void morseToText();
+void caesarCipherEncrypt();
+void caesarCipherDecrypt();
+void textToTernary();
+void ternaryToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -102,7 +106,11 @@ int main() {
 			case 34: rot13ToText(); break;
 			case 35: textToMorse(); break;
 			case 36: morseToText(); break;
+			case 37: textToTernary(); break;
+			case 38: ternaryToText(); break;
 
+			case 50: caesarCipherEncrypt(); break;
+			case 51: caesarCipherDecrypt(); break;
 
 			case 40: viewHistory(); break;
 			case 41: cout << "Exiting program. Goodbye!\n"; break;
@@ -174,6 +182,13 @@ void showMenu() {
 	cout << " 32. ROT13 to Text\n";
 	cout << " 33. Text to Morse\n";
 	cout << " 34. Morse to Text\n";
+	cout << " 35. Text to Ternary\n";
+	cout << " 36. Ternary to Text\n";
+
+	cout << "\n Text Encryption/Decryption:\n";
+	cout << " 50. Text to Caesar Cipher\n";
+	cout << " 51. Caesar Cipher to Text\n";
+
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
@@ -1320,6 +1335,189 @@ void morseToText() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void caesarCipherEncrypt() {
+	string input;
+	int shift;
+	char choice;
+
+	do {
+		cout << "Enter text to encrypt: ";
+		cin.ignore();
+		getline(cin, input);
+
+		cout << "Enter shift value (1-25): ";
+		cin >> shift;
+
+		if (cin.fail() || shift < 1 || shift > 25) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid shift value between 1 and 25.\n";
+			continue;
+		}
+
+		string encryptedText = "";
+		for (char c : input) {
+			if (isalpha(c)) {
+				char base = isupper(c) ? 'A' : 'a';
+				encryptedText += static_cast<char>(((c - base + shift) % 26) + base);
+			}
+			else {
+				encryptedText += c;
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Original: " << input << "\n   Encrypted: " << encryptedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(input + " (original) -> " + encryptedText + " (Caesar encrypted)");
+
+		cout << "Do another encryption? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void caesarCipherDecrypt() {
+	string input;
+	int shift;
+	char choice;
+
+	do {
+		cout << "Enter text to decrypt: ";
+		cin.ignore();
+		getline(cin, input);
+
+		cout << "Enter shift value (1-25): ";
+		cin >> shift;
+
+		if (cin.fail() || shift < 1 || shift > 25) {
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cout << "Invalid input! Please enter a valid shift value between 1 and 25.\n";
+			continue;
+		}
+
+		string decryptedText = "";
+		for (char c : input) {
+			if (isalpha(c)) {
+				char base = isupper(c) ? 'A' : 'a';
+				decryptedText += static_cast<char>(((c - base - shift + 26) % 26) + base);
+			}
+			else {
+				decryptedText += c;
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Encrypted: " << input << "\n   Decrypted: " << decryptedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(input + " (Caesar encrypted) -> " + decryptedText + " (original)");
+
+		cout << "Do another decryption? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void textToTernary() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text: ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string ternaryOutput = "";
+
+		for (char c : text) {
+			int asciiValue = static_cast<int>(c);
+			string ternary = "";
+
+			if (asciiValue == 0) {
+				ternary = "0";
+			}
+			else {
+				int num = asciiValue;
+				while (num > 0) {
+					ternary = to_string(num % 3) + ternary;
+					num /= 3;
+				}
+			}
+
+			ternaryOutput += ternary + " ";
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Ternary: " << ternaryOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + ternaryOutput + " (ternary)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void ternaryToText() {
+	string ternaryInput;
+	char choice;
+
+	do {
+		cout << "Enter a ternary string (space-separated values): ";
+		cin.ignore();
+		getline(cin, ternaryInput);
+
+		if (ternaryInput == "b" || ternaryInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(ternaryInput);
+		string ternaryChunk;
+		string textOutput = "";
+
+		while (ss >> ternaryChunk) {
+			bool validTernary = true;
+			for (char c : ternaryChunk) {
+				if (c != '0' && c != '1' && c != '2') {
+					validTernary = false;
+					break;
+				}
+			}
+
+			if (!validTernary) {
+				cout << "Invalid ternary format! Only 0, 1, and 2 are allowed.\n";
+				continue;
+			}
+
+			int decimalValue = 0;
+			for (char c : ternaryChunk) {
+				decimalValue = decimalValue * 3 + (c - '0');
+			}
+
+			textOutput += static_cast<char>(decimalValue);
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Ternary: " << ternaryInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(ternaryInput + " (ternary) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
+
 
 
 
