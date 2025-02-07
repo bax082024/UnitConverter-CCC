@@ -1692,6 +1692,39 @@ int convertRomanToDecimal(const string& roman) {
 	return total;
 }
 
+void romanToDecimal() {
+	string romanInput;
+	char choice;
+
+	do {
+		cout << "Enter a Roman numeral (I to MMMCMXCIX): ";
+		cin >> romanInput;
+
+		if (romanInput == "b" || romanInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		for (char& c : romanInput) c = toupper(c);
+
+		int decimalValue = convertRomanToDecimal(romanInput);
+
+		if (decimalValue <= 0 || decimalValue > 3999) {
+			cout << "Invalid Roman numeral! Please enter a valid one.\n";
+			continue;
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Roman Numeral: " << romanInput << "  →  Decimal: " << decimalValue << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(romanInput + " (Roman) = " + to_string(decimalValue) + " (decimal)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
