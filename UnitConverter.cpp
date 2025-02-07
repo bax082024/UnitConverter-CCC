@@ -41,6 +41,8 @@ void textToHexadecimal();
 void hexadecimalToText();
 void textToBase64();
 void base64ToText();
+void textToROT13();
+void rot13ToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -93,6 +95,8 @@ int main() {
 			case 30: hexadecimalToText(); break;
 			case 31: textToBase64(); break;
 			case 32: base64ToText(); break;
+			case 33: textToROT13(); break;
+			case 34: rot13ToText(); break;
 
 
 			case 40: viewHistory(); break;
@@ -161,6 +165,8 @@ void showMenu() {
 	cout << " 28. Text to Hexadecimal\n";
 	cout << " 29. Text to Base64\n";
 	cout << " 30. Base64 to Text\n";
+	cout << " 31. Text to ROT13\n";
+	cout << " 32. ROT13 to Text\n";
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
@@ -1149,6 +1155,71 @@ void base64ToText() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+string applyROT13(const string& input) {
+	string output = input;
+	for (char& c : output) {
+		if (isalpha(c)) {
+			char base = isupper(c) ? 'A' : 'a';
+			c = (c - base + 13) % 26 + base;
+		}
+	}
+	return output;
+}
+
+void textToROT13() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text to encode using ROT13 : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string encodedText = applyROT13(text);
+		cout << "\n-------------------------------------------\n";
+		cout << "   Original Text: " << text << "  →  ROT13 Encoded: " << encodedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + encodedText + " (ROT13)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+void rot13ToText() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter ROT13 encoded text to decode : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string decodedText = applyROT13(text);
+		cout << "\n-------------------------------------------\n";
+		cout << "   ROT13 Encoded: " << text << "  →  Decoded Text: " << decodedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (ROT13) = " + decodedText + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
 
 
