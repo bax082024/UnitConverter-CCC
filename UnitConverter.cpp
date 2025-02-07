@@ -1231,7 +1231,7 @@ unordered_map<char, string> morseCode = {
 	{'Z', "--.."},{'Æ', ".-.-" }, {'Ø', "---." }, {'Å', ".--.-" },
 	{'1', ".----"},{'2', "..---"},{'3', "...--"},{'4', "....-"},{'5', "....."},
 	{'6', "-...."},{'7', "--..."},{'8', "---.."},{'9', "----."},{'0', "-----"},
-	{' ', "/"} // Space is represented as "/"
+	{' ', "/"} 
 };
 
 unordered_map<string, char> morseToChar;
@@ -1240,6 +1240,43 @@ void initializeMorseToChar() {
 		morseToChar[pair.second] = pair.first;
 	}
 }
+
+void textToMorse() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text to convert to Morse Code : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string morseOutput;
+		for (char c : text) {
+			c = toupper(c);
+			if (morseCode.count(c)) {
+				morseOutput += morseCode[c] + " ";
+			}
+			else {
+				morseOutput += "? ";
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Morse Code: " << morseOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + morseOutput + " (Morse)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
