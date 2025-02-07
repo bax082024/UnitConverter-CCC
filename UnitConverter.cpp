@@ -40,6 +40,7 @@ void binaryToText();
 void textToHexadecimal();
 void hexadecimalToText();
 void textToBase64();
+void base64ToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -91,6 +92,7 @@ int main() {
 			case 27: textToHexadecimal(); break;
 			case 30: hexadecimalToText(); break;
 			case 31: textToBase64(); break;
+			case 32: base64ToText(); break;
 
 
 			case 40: viewHistory(); break;
@@ -158,7 +160,7 @@ void showMenu() {
 	cout << " 27. Hexadecimal to Text\n";
 	cout << " 28. Text to Hexadecimal\n";
 	cout << " 29. Text to Base64\n";
-
+	cout << " 30. Base64 to Text\n";
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
