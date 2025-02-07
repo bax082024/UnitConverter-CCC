@@ -4,6 +4,7 @@
 #include <fstream> 
 #include <sstream>
 #include <string>
+#include <stdexcept>
 #include <bitset>
 #include <vector>
 
@@ -38,6 +39,8 @@ void textToBinary();
 void binaryToText();
 void textToHexadecimal();
 void hexadecimalToText();
+void textToBase64();
+void base64ToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -88,6 +91,8 @@ int main() {
 			case 26: binaryToText(); break;
 			case 27: textToHexadecimal(); break;
 			case 30: hexadecimalToText(); break;
+			case 31: textToBase64(); break;
+			case 32: base64ToText(); break;
 
 
 			case 40: viewHistory(); break;
@@ -155,7 +160,7 @@ void showMenu() {
 	cout << " 27. Hexadecimal to Text\n";
 	cout << " 28. Text to Hexadecimal\n";
 	cout << " 29. Text to Base64\n";
-
+	cout << " 30. Base64 to Text\n";
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
@@ -1066,6 +1071,85 @@ string encodeBase64UTF8(const string& input) {
 
 	return output;
 }
+
+void textToBase64() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text to convert to Base64 : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string encodedBase64 = encodeBase64UTF8(text);
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Base64: " << encodedBase64 << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + encodedBase64 + " (Base64)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+string decodeBase64UTF8(const string& input) {
+	string output;
+	vector<int> T(256, -1);
+	for (int i = 0; i < 64; i++) T[base64_chars[i]] = i;
+
+	int val = 0, bits = -8;
+	for (unsigned char c : input) {
+		if (T[c] == -1) break;
+		val = (val << 6) + T[c];
+		bits += 6;
+
+		if (bits >= 0) {
+			output.push_back(char((val >> bits) & 0xFF));
+			val &= (1 << bits) - 1;
+			bits -= 8;
+		}
+	}
+	return output;
+}
+
+void base64ToText() {
+	string base64Input;
+	char choice;
+
+	do {
+		cout << "Enter Base64 text to decode : ";
+		cin.ignore();
+		getline(cin, base64Input);
+
+		if (base64Input == "b" || base64Input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		try {
+			string decodedText = decodeBase64UTF8(base64Input);
+			cout << "\n-------------------------------------------\n";
+			cout << "   Base64: " << base64Input << "  →  Text: " << decodedText << "\n";
+			cout << "-------------------------------------------\n";
+
+			logConversion(base64Input + " (Base64) = " + decodedText + " (text)");
+		}
+		catch (const invalid_argument& e) {
+			cout << "Error: Invalid Base64 input!\n";
+		}
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
