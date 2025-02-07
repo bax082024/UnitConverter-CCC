@@ -47,6 +47,7 @@ void rot13ToText();
 void textToMorse();
 void morseToText();
 void caesarCipherEncrypt();
+void caesarCipherDecrypt();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -105,6 +106,7 @@ int main() {
 			case 36: morseToText(); break;
 
 			case 50: caesarCipherEncrypt(); break;
+			case 51: caesarCipherDecrypt(); break;
 
 			case 40: viewHistory(); break;
 			case 41: cout << "Exiting program. Goodbye!\n"; break;
@@ -180,6 +182,7 @@ void showMenu() {
 
 	cout << "\n Text Encryption/Decryption:\n";
 	cout << " 50. Text to Caesar Cipher\n";
+	cout << " 51. Caesar Cipher to Text\n";
 
 
 	cout << "\n OTHER OPTIONS:\n";
