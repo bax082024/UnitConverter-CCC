@@ -53,6 +53,7 @@ void ternaryToText();
 void textToOctal();
 void octalToText();
 void decimalToRoman();
+void romanToDecimal();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -114,6 +115,7 @@ int main() {
 			case 39: textToOctal(); break;
 			case 40: octalToText(); break;
 			case 41: decimalToRoman(); break;
+			case 42: romanToDecimal(); break;
 
 			case 50: caesarCipherEncrypt(); break;
 			case 51: caesarCipherDecrypt(); break;
@@ -193,6 +195,7 @@ void showMenu() {
 	cout << " 37. Text to Octal\n";
 	cout << " 38. Octal to Text\n";
 	cout << " 39. Decimal to Roman Numerals\n";
+	cout << " 40. Roman Numerals to Decimal\n";
 
 	cout << "\n Text Encryption/Decryption:\n";
 	cout << " 50. Text to Caesar Cipher\n";
