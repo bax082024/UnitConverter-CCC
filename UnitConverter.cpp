@@ -1462,6 +1462,57 @@ void textToTernary() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void ternaryToText() {
+	string ternaryInput;
+	char choice;
+
+	do {
+		cout << "Enter a ternary string (space-separated values): ";
+		cin.ignore();
+		getline(cin, ternaryInput);
+
+		if (ternaryInput == "b" || ternaryInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(ternaryInput);
+		string ternaryChunk;
+		string textOutput = "";
+
+		while (ss >> ternaryChunk) {
+			bool validTernary = true;
+			for (char c : ternaryChunk) {
+				if (c != '0' && c != '1' && c != '2') {
+					validTernary = false;
+					break;
+				}
+			}
+
+			if (!validTernary) {
+				cout << "Invalid ternary format! Only 0, 1, and 2 are allowed.\n";
+				continue;
+			}
+
+			int decimalValue = 0;
+			for (char c : ternaryChunk) {
+				decimalValue = decimalValue * 3 + (c - '0');
+			}
+
+			textOutput += static_cast<char>(decimalValue);
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Ternary: " << ternaryInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(ternaryInput + " (ternary) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
