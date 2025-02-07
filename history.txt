@@ -9,3 +9,9 @@
 800 Calories = 3347.200000 Joules
 12.000000 feet = 3.657600 meters
 01001010101010101 (binary) = 38229 (decimal)
+12 (text) = 61 62  (octal)
+5 (text) = 65  (octal)
+12 (text) = 1211 1212  (ternary)
+12 (decimal) = XII (Roman Numeral)
+500 (decimal) = D (Roman Numeral)
+503 (decimal) = DIII (Roman Numeral)

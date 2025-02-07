@@ -1,15 +1,20 @@
 ﻿  UnitConverter.cpp
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(948,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(987,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1021,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1064,45): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1120,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1167,44): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1172,34): warning C4101: 'e': unreferenced local variable
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1208,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1234,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1289,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1329,46): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1458,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1509,45): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(960,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(999,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1033,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1076,45): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1132,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1179,44): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1184,34): warning C4101: 'e': unreferenced local variable
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1220,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1246,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1301,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1341,46): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1470,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1521,45): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1554,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1605,41): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1666,39): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1685,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1721,49): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
   UnitConverter.vcxproj -> C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\x64\Debug\UnitConverter.exe
