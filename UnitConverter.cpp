@@ -1191,6 +1191,33 @@ void textToROT13() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void rot13ToText() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter ROT13 encoded text to decode : ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string decodedText = applyROT13(text);
+		cout << "\n-------------------------------------------\n";
+		cout << "   ROT13 Encoded: " << text << "  →  Decoded Text: " << decodedText << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (ROT13) = " + decodedText + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
 
 
