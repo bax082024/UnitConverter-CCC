@@ -1279,6 +1279,47 @@ void textToMorse() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void morseToText() {
+	string morseInput;
+	char choice;
+
+	do {
+		cout << "Enter Morse Code to convert to text (use spaces between codes, '/' for spaces) : ";
+		cin.ignore();
+		getline(cin, morseInput);
+
+		if (morseInput == "b" || morseInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(morseInput);
+		string morseSymbol, textOutput = "";
+
+		while (ss >> morseSymbol) {
+			if (morseToChar.count(morseSymbol)) {
+				textOutput += morseToChar[morseSymbol];
+			}
+			else if (morseSymbol == "/") {
+				textOutput += " ";
+			}
+			else {
+				textOutput += "?";
+			}
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Morse Code: " << morseInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(morseInput + " (Morse) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+
 
 
 
