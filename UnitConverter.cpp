@@ -51,6 +51,9 @@ void caesarCipherDecrypt();
 void textToTernary();
 void ternaryToText();
 void textToOctal();
+void octalToText();
+void decimalToRoman();
+void romanToDecimal();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -110,12 +113,15 @@ int main() {
 			case 37: textToTernary(); break;
 			case 38: ternaryToText(); break;
 			case 39: textToOctal(); break;
+			case 40: octalToText(); break;
+			case 41: decimalToRoman(); break;
+			case 42: romanToDecimal(); break;
 
 			case 50: caesarCipherEncrypt(); break;
 			case 51: caesarCipherDecrypt(); break;
 
-			case 40: viewHistory(); break;
-			case 41: cout << "Exiting program. Goodbye!\n"; break;
+			case 60: viewHistory(); break;
+			case 61: cout << "Exiting program. Goodbye!\n"; break;
 			default: cout << "Invalid choice! Please select a valid option.\n";
 			
 		}
@@ -187,6 +193,9 @@ void showMenu() {
 	cout << " 35. Text to Ternary\n";
 	cout << " 36. Ternary to Text\n";
 	cout << " 37. Text to Octal\n";
+	cout << " 38. Octal to Text\n";
+	cout << " 39. Decimal to Roman Numerals\n";
+	cout << " 40. Roman Numerals to Decimal\n";
 
 	cout << "\n Text Encryption/Decryption:\n";
 	cout << " 50. Text to Caesar Cipher\n";
@@ -1552,6 +1561,172 @@ void textToOctal() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void octalToText() {
+	string octalInput;
+	char choice;
+
+	do {
+		cout << "Enter an octal string (space-separated values): ";
+		cin.ignore();
+		getline(cin, octalInput);
+
+		if (octalInput == "b" || octalInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(octalInput);
+		string octalChunk;
+		string textOutput = "";
+
+		while (ss >> octalChunk) {
+			bool validOctal = true;
+			for (char c : octalChunk) {
+				if (c < '0' || c > '7') {
+					validOctal = false;
+					break;
+				}
+			}
+
+			if (!validOctal) {
+				cout << "Invalid octal format! Only digits 0-7 are allowed.\n";
+				continue;
+			}
+
+			int decimalValue = 0;
+			stringstream converter;
+			converter << oct << octalChunk;
+			converter >> decimalValue;
+
+			textOutput += static_cast<char>(decimalValue);
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Octal: " << octalInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(octalInput + " (octal) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+string convertToRoman(int num) {
+	if (num <= 0 || num > 3999) {
+		return "Invalid (Roman numerals only support 1-3999)";
+	}
+
+	struct RomanMap {
+		int value;
+		string numeral;
+	};
+
+	const RomanMap romanTable[] = {
+		{1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
+		{100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
+		{10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"}
+	};
+
+	string result = "";
+	for (const auto& entry : romanTable) {
+		while (num >= entry.value) {
+			result += entry.numeral;
+			num -= entry.value;
+		}
+	}
+	return result;
+}
+
+void decimalToRoman() {
+	string input;
+	char choice;
+
+	do {
+		cout << "Enter a decimal number (1-3999): ";
+		cin >> input;
+
+		if (input == "b" || input == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		int number;
+		try {
+			number = stoi(input);
+		}
+		catch (exception&) {
+			cout << "Invalid input! Please enter a valid number.\n";
+			continue;
+		}
+
+		string romanNumeral = convertToRoman(number);
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Decimal: " << number << "  →  Roman Numeral: " << romanNumeral << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(to_string(number) + " (decimal) = " + romanNumeral + " (Roman Numeral)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+int convertRomanToDecimal(const string& roman) {
+	unordered_map<char, int> romanValues = {
+		{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100},
+		{'D', 500}, {'M', 1000}
+	};
+
+	int total = 0;
+	int prevValue = 0;
+
+	for (int i = roman.length() - 1; i >= 0; --i) {
+		int currentValue = romanValues[roman[i]];
+		if (currentValue < prevValue) {
+			total -= currentValue;
+		}
+		else {
+			total += currentValue;
+		}
+		prevValue = currentValue;
+	}
+	return total;
+}
+
+void romanToDecimal() {
+	string romanInput;
+	char choice;
+
+	do {
+		cout << "Enter a Roman numeral (I to MMMCMXCIX): ";
+		cin >> romanInput;
+
+		if (romanInput == "b" || romanInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		for (char& c : romanInput) c = toupper(c);
+
+		int decimalValue = convertRomanToDecimal(romanInput);
+
+		if (decimalValue <= 0 || decimalValue > 3999) {
+			cout << "Invalid Roman numeral! Please enter a valid one.\n";
+			continue;
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Roman Numeral: " << romanInput << "  →  Decimal: " << decimalValue << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(romanInput + " (Roman) = " + to_string(decimalValue) + " (decimal)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
 
 
 
