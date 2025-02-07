@@ -101,6 +101,7 @@ int main() {
 			case 33: textToROT13(); break;
 			case 34: rot13ToText(); break;
 			case 35: textToMorse(); break;
+			case 36: morseToText(); break;
 
 
 			case 40: viewHistory(); break;
@@ -172,6 +173,7 @@ void showMenu() {
 	cout << " 31. Text to ROT13\n";
 	cout << " 32. ROT13 to Text\n";
 	cout << " 33. Text to Morse\n";
+	cout << " 34. Morse to Text\n";
 
 	cout << "\n OTHER OPTIONS:\n";
 	cout << " 30. View Conversion History\n";
