@@ -1,2 +1,6 @@
 ﻿  UnitConverter.cpp
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(914,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(953,43): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(987,34): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\UnitConverter.cpp(1030,45): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
   UnitConverter.vcxproj -> C:\HjemmeKode\C-Sharp\MyProjects\UnitConverter\x64\Debug\UnitConverter.exe

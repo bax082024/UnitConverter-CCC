@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 #include <bitset>
-
+#include <vector>
 
 using namespace std;
 
@@ -37,6 +37,7 @@ void decimalToBinary();
 void textToBinary();
 void binaryToText();
 void textToHexadecimal();
+void hexadecimalToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -86,6 +87,7 @@ int main() {
 			case 25: textToBinary(); break;
 			case 26: binaryToText(); break;
 			case 27: textToHexadecimal(); break;
+			case 30: hexadecimalToText(); break;
 
 
 			case 40: viewHistory(); break;
@@ -151,6 +153,8 @@ void showMenu() {
 	cout << " 25. Text to Binary\n";
 	cout << " 26. Binary to Text\n";
 	cout << " 27. Hexadecimal to Text\n";
+	cout << " 28. Text to Hexadecimal\n";
+	cout << " 29. Text to Base64\n";
 
 
 	cout << "\n OTHER OPTIONS:\n";
@@ -893,7 +897,7 @@ void textToBinary() {
 	char choice;
 
 	do {
-		cout << "Enter text (or type 'b' to go back): ";
+		cout << "Enter text : ";
 		cin.ignore(); 
 		getline(cin, text);
 
@@ -923,7 +927,7 @@ void binaryToText() {
 	char choice;
 
 	do {
-		cout << "Enter a binary string (8-bit groups, space-separated) or type 'b' to go back: ";
+		cout << "Enter a binary string (8-bit groups, space-separated) : ";
 		cin.ignore();
 		getline(cin, binaryInput);
 
@@ -962,7 +966,7 @@ void textToHexadecimal() {
 	char choice;
 
 	do {
-		cout << "Enter text (or type 'b' to go back): ";
+		cout << "Enter text : ";
 		cin.ignore();
 		getline(cin, text);
 
@@ -991,6 +995,77 @@ void textToHexadecimal() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void hexadecimalToText() {
+	string hexInput;
+	char choice;
+
+	do {
+		cout << "Enter a hexadecimal string (2-character pairs, space-separated) : ";
+		cin.ignore();
+		getline(cin, hexInput);
+
+		if (hexInput == "b" || hexInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(hexInput);
+		string hexChunk;
+		string textOutput = "";
+
+		while (ss >> hexChunk) {
+			if (hexChunk.length() != 2 || hexChunk.find_first_not_of("0123456789ABCDEFabcdef") != string::npos) {
+				cout << "Invalid hexadecimal format! Enter 2-character hex pairs separated by spaces.\n";
+				continue;
+			}
+
+			int asciiValue;
+			stringstream converter;
+			converter << hex << hexChunk;
+			converter >> asciiValue;
+
+			textOutput += static_cast<char>(asciiValue);
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Hexadecimal: " << hexInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(hexInput + " (hex) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
+const string base64_chars =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+"abcdefghijklmnopqrstuvwxyz"
+"0123456789+/";
+
+string encodeBase64UTF8(const string& input) {
+	vector<unsigned char> bytes(input.begin(), input.end());
+	string output;
+	int val = 0, bits = -6;
+
+	for (unsigned char c : bytes) {
+		val = (val << 8) + c;
+		bits += 8;
+		while (bits >= 0) {
+			output.push_back(base64_chars[(val >> bits) & 0x3F]);
+			bits -= 6;
+		}
+	}
+
+	if (bits > -6) {
+		output.push_back(base64_chars[((val << 8) >> (bits + 8)) & 0x3F]);
+	}
+	while (output.size() % 4) {
+		output.push_back('=');
+	}
+
+	return output;
+}
 
 
 
