@@ -1516,6 +1516,39 @@ void ternaryToText() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void textToOctal() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text: ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream octalStream;
+
+		for (char c : text) {
+			octalStream << oct << static_cast<int>(c) << " ";
+		}
+
+		string octalOutput = octalStream.str();
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Octal: " << octalOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + octalOutput + " (octal)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
