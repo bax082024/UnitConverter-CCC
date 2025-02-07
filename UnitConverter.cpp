@@ -151,6 +151,7 @@ void showMenu() {
 	cout << " 25. Text to Binary\n";
 	cout << " 26. Binary to Text\n";
 	cout << " 27. Hexadecimal to Text\n";
+	cout << " 28. Text to Hexadecimal\n";
 
 
 	cout << "\n OTHER OPTIONS:\n";
@@ -991,6 +992,48 @@ void textToHexadecimal() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void hexadecimalToText() {
+	string hexInput;
+	char choice;
+
+	do {
+		cout << "Enter a hexadecimal string (2-character pairs, space-separated) : ";
+		cin.ignore();
+		getline(cin, hexInput);
+
+		if (hexInput == "b" || hexInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(hexInput);
+		string hexChunk;
+		string textOutput = "";
+
+		while (ss >> hexChunk) {
+			if (hexChunk.length() != 2 || hexChunk.find_first_not_of("0123456789ABCDEFabcdef") != string::npos) {
+				cout << "Invalid hexadecimal format! Enter 2-character hex pairs separated by spaces.\n";
+				continue;
+			}
+
+			int asciiValue;
+			stringstream converter;
+			converter << hex << hexChunk;
+			converter >> asciiValue;
+
+			textOutput += static_cast<char>(asciiValue);
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Hexadecimal: " << hexInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(hexInput + " (hex) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
 
 
 
