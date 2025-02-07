@@ -1552,6 +1552,57 @@ void textToOctal() {
 	} while (choice == 'y' || choice == 'Y');
 }
 
+void octalToText() {
+	string octalInput;
+	char choice;
+
+	do {
+		cout << "Enter an octal string (space-separated values): ";
+		cin.ignore();
+		getline(cin, octalInput);
+
+		if (octalInput == "b" || octalInput == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		stringstream ss(octalInput);
+		string octalChunk;
+		string textOutput = "";
+
+		while (ss >> octalChunk) {
+			bool validOctal = true;
+			for (char c : octalChunk) {
+				if (c < '0' || c > '7') {
+					validOctal = false;
+					break;
+				}
+			}
+
+			if (!validOctal) {
+				cout << "Invalid octal format! Only digits 0-7 are allowed.\n";
+				continue;
+			}
+
+			int decimalValue = 0;
+			stringstream converter;
+			converter << oct << octalChunk;
+			converter >> decimalValue;
+
+			textOutput += static_cast<char>(decimalValue);
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Octal: " << octalInput << "  →  Text: " << textOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(octalInput + " (octal) = " + textOutput + " (text)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
