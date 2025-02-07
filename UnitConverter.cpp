@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <bitset>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -43,6 +44,8 @@ void textToBase64();
 void base64ToText();
 void textToROT13();
 void rot13ToText();
+void textToMorse();
+void morseToText();
 
 void viewHistory();
 void logConversion(const string& conversion);
@@ -1217,6 +1220,25 @@ void rot13ToText() {
 		cout << "Do another conversion? (y/n): ";
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
+}
+
+unordered_map<char, string> morseCode = {
+	{'A', ".-"},   {'B', "-..."}, {'C', "-.-."}, {'D', "-.."},  {'E', "."},
+	{'F', "..-."}, {'G', "--."},  {'H', "...."}, {'I', ".."},   {'J', ".---"},
+	{'K', "-.-"},  {'L', ".-.."}, {'M', "--"},   {'N', "-."},   {'O', "---"},
+	{'P', ".--."}, {'Q', "--.-"}, {'R', ".-."},  {'S', "..."},  {'T', "-"},
+	{'U', "..-"},  {'V', "...-"}, {'W', ".--"},  {'X', "-..-"}, {'Y', "-.--"},
+	{'Z', "--.."},{'Æ', ".-.-" }, {'Ø', "---." }, {'Å', ".--.-" },
+	{'1', ".----"},{'2', "..---"},{'3', "...--"},{'4', "....-"},{'5', "....."},
+	{'6', "-...."},{'7', "--..."},{'8', "---.."},{'9', "----."},{'0', "-----"},
+	{' ', "/"} // Space is represented as "/"
+};
+
+unordered_map<string, char> morseToChar;
+void initializeMorseToChar() {
+	for (const auto& pair : morseCode) {
+		morseToChar[pair.second] = pair.first;
+	}
 }
 
 
