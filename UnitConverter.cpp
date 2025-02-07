@@ -178,6 +178,7 @@ void showMenu() {
 	cout << " 32. ROT13 to Text\n";
 	cout << " 33. Text to Morse\n";
 	cout << " 34. Morse to Text\n";
+
 	
 
 	cout << "\n Text Encryption/Decryption:\n";
@@ -1414,6 +1415,52 @@ void caesarCipherDecrypt() {
 		cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
 }
+
+void textToTernary() {
+	string text;
+	char choice;
+
+	do {
+		cout << "Enter text: ";
+		cin.ignore();
+		getline(cin, text);
+
+		if (text == "b" || text == "B") {
+			cout << "Returning to main menu...\n";
+			return;
+		}
+
+		string ternaryOutput = "";
+
+		for (char c : text) {
+			int asciiValue = static_cast<int>(c);
+			string ternary = "";
+
+			if (asciiValue == 0) {
+				ternary = "0";
+			}
+			else {
+				int num = asciiValue;
+				while (num > 0) {
+					ternary = to_string(num % 3) + ternary;
+					num /= 3;
+				}
+			}
+
+			ternaryOutput += ternary + " ";
+		}
+
+		cout << "\n-------------------------------------------\n";
+		cout << "   Text: " << text << "  →  Ternary: " << ternaryOutput << "\n";
+		cout << "-------------------------------------------\n";
+
+		logConversion(text + " (text) = " + ternaryOutput + " (ternary)");
+
+		cout << "Do another conversion? (y/n): ";
+		cin >> choice;
+	} while (choice == 'y' || choice == 'Y');
+}
+
 
 
 
